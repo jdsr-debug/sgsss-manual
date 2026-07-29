@@ -11,7 +11,10 @@
 <meta property="og:title" content="SGSSS · Manual interactivo del sistema de salud colombiano">
 <meta property="og:description" content="15 módulos, glosario de 125 términos y autoevaluación. Todo el SGSSS explicado y consultable en una sola página. Actualizado a julio de 2026.">
 <meta property="og:locale" content="es_CO">
-<meta property="og:image" content="preview.png">
+<meta property="og:url" content="https://jdsr-debug.github.io/sgsss-manual/">
+<meta property="og:image" content="https://jdsr-debug.github.io/sgsss-manual/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F6E64'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
@@ -645,20 +648,72 @@ footer{border-top:1px solid var(--line);padding:22px 0 0;margin-top:50px;color:v
   </table></div>
 
   <h3>4. Lo que paga el usuario de su bolsillo</h3>
+  <p>Esta es probablemente la confusión más extendida del sistema, y viene de intentar memorizar quién paga cada cosa. El atajo real es entender <b>para qué se inventó cada una</b>: de ahí se deduce todo lo demás, incluida su forma de cálculo.</p>
+
   <div class="grid g2">
     <div class="card">
-      <h3>Cuota moderadora</h3>
-      <p style="font-size:13.8px;color:var(--ink2);margin:0">Objetivo: <b>regular el uso</b> del servicio. La paga solo el <b>cotizante y sus beneficiarios del contributivo</b>. Se cobra en consulta externa, consulta odontológica, exámenes de laboratorio ambulatorios y entrega de medicamentos ambulatorios. Valor fijo por evento.</p>
+      <h3>Cuota moderadora · regular la demanda</h3>
+      <p style="font-size:13.8px;color:var(--ink2)">Nace para corregir un problema propio de todo seguro: cuando el servicio se percibe como gratuito en el punto de atención, se consume más de lo necesario. Es un peaje simbólico para que el usuario lo piense antes de pedir una cita que no requiere.</p>
+      <p style="font-size:13.8px;color:var(--ink2);margin-bottom:0"><b>Por eso es un valor fijo.</b> No le interesa cuánto cuesta el servicio, sino que exista una señal de precio. Y por eso se cobra en servicios <b>ambulatorios de baja intensidad</b>, que son los únicos que alguien podría sobredemandar.</p>
     </div>
     <div class="card">
-      <h3>Copago</h3>
-      <p style="font-size:13.8px;color:var(--ink2);margin:0">Objetivo: <b>ayudar a financiar</b> el sistema. Lo pagan los <b>beneficiarios</b> del contributivo y los afiliados del <b>grupo B del subsidiado</b>. Es un porcentaje del valor del servicio, con topes por evento y por año. Nunca se cobra al cotizante por sí mismo.</p>
+      <h3>Copago · cofinanciar el servicio</h3>
+      <p style="font-size:13.8px;color:var(--ink2)">Nace con un propósito distinto y más prosaico: conseguir recursos. No busca modificar la conducta del usuario —nadie se hospitaliza de más por gusto— sino que quien recibe un servicio costoso aporte una fracción de su valor.</p>
+      <p style="font-size:13.8px;color:var(--ink2);margin-bottom:0"><b>Por eso es un porcentaje.</b> A mayor costo del servicio, mayor aporte. Y por eso se cobra en los servicios de <b>mayor complejidad</b>, que es donde está el dinero.</p>
     </div>
   </div>
 
+  <div class="note">
+    <span class="lab">La idea que hay que retener</span>
+    <p><b>La forma de cada pago delata su función.</b> Un valor fijo sirve para modificar conducta; un porcentaje sirve para recaudar. Si recuerdas eso, no necesitas memorizar nada más: sabrás deducir en qué servicios aplica cada una y por qué solo el copago tiene topes.</p>
+  </div>
+
+  <h3>Comparación directa</h3>
+  <div class="tbl"><table>
+    <tr><th>&nbsp;</th><th>Cuota moderadora</th><th>Copago</th></tr>
+    <tr><td><b>Para qué existe</b></td><td>Regular el uso del servicio</td><td>Ayudar a financiar el sistema</td></tr>
+    <tr><td><b>Cómo se calcula</b></td><td>Valor fijo por evento</td><td>Porcentaje del valor del servicio</td></tr>
+    <tr><td><b>¿Depende del costo del servicio?</b></td><td>No</td><td>Sí</td></tr>
+    <tr><td><b>¿Tiene topes?</b></td><td>No tiene tope anual</td><td>Sí: tope por evento y tope anual</td></tr>
+    <tr><td><b>Quién la paga</b></td><td>Cotizante <b>y</b> beneficiarios del contributivo</td><td>Beneficiarios del contributivo y afiliados del grupo B del subsidiado</td></tr>
+    <tr><td><b>¿La paga el cotizante?</b></td><td>Sí</td><td><b>Nunca</b></td></tr>
+    <tr><td><b>¿Se cobra en el subsidiado?</b></td><td><b>Nunca</b></td><td>Sí, solo al grupo B</td></tr>
+    <tr><td><b>Servicios típicos</b></td><td>Consulta externa médica, odontológica y paramédica; laboratorio e imágenes ambulatorios; medicamentos ambulatorios</td><td>Hospitalización, cirugía y, en general, todo lo que no esté sujeto a cuota moderadora</td></tr>
+    <tr><td><b>Norma</b></td><td colspan="2" style="text-align:center">Acuerdo 260 de 2004 del CNSSS</td></tr>
+  </table></div>
+
+  <h3>Quién paga qué — la matriz completa</h3>
+  <div class="tbl"><table>
+    <tr><th>Tipo de afiliado</th><th>Cuota moderadora</th><th>Copago</th></tr>
+    <tr><td>Contributivo — <b>cotizante</b></td><td>Sí</td><td><b>No, nunca</b></td></tr>
+    <tr><td>Contributivo — <b>beneficiario</b></td><td>Sí</td><td>Sí</td></tr>
+    <tr><td>Subsidiado — <b>grupo A</b></td><td>No</td><td>No</td></tr>
+    <tr><td>Subsidiado — <b>grupo B</b></td><td>No</td><td>Sí</td></tr>
+  </table></div>
+
+  <h3>Tres casos para fijarlo</h3>
+  <ol class="steps">
+    <li><b>Cotizante que gana 3 SMLMV va a consulta con medicina general.</b> Paga cuota moderadora de $20.100. No paga copago — y no lo pagará nunca, sin importar el servicio.</li>
+    <li><b>Su esposa, beneficiaria, va a esa misma consulta.</b> También paga los $20.100 de cuota moderadora. Aquí está el punto que casi todos fallan: <b>la cuota moderadora no es exclusiva del cotizante</b>.</li>
+    <li><b>Esa misma esposa requiere una cirugía que cuesta $12.000.000.</b> Le corresponde un copago del 17,3%, es decir $2.076.000… pero el tope por evento de su rango es $1.497.644, así que <b>paga $1.497.644</b>. Y no paga cuota moderadora por la cirugía: nunca se cobran ambas por el mismo servicio.</li>
+  </ol>
+
   <div class="note w">
-    <span class="lab">Regla de oro para no confundirlas</span>
-    <p><b>Cuota moderadora = cotizante, valor fijo, servicios ambulatorios de baja intensidad.</b><br><b>Copago = beneficiario, porcentaje del valor, servicios de mayor complejidad.</b> Nunca se cobran ambas por el mismo servicio.</p>
+    <span class="lab">Las cuatro reglas que no fallan</span>
+    <p><b>1.</b> El cotizante <b>nunca</b> paga copago. Es la regla más útil de todas.<br>
+    <b>2.</b> En el régimen subsidiado <b>nunca</b> se cobra cuota moderadora.<br>
+    <b>3.</b> Nunca se cobran las dos por un mismo servicio.<br>
+    <b>4.</b> Solo el copago tiene topes por evento y por año; la cuota moderadora no los tiene porque su monto es pequeño y fijo.</p>
+  </div>
+
+  <div class="note a">
+    <span class="lab">Error frecuente</span>
+    <p>Decir “la cuota moderadora la paga el cotizante” como si fuera exclusiva de él. La pagan <b>cotizante y beneficiarios</b>. La exclusividad va en el otro sentido: el <b>copago</b> es el que el cotizante no paga jamás. Si vas a memorizar una sola frase, que sea esa.</p>
+  </div>
+
+  <div class="note">
+    <span class="lab">Límite constitucional</span>
+    <p>Ni el copago ni la cuota moderadora pueden convertirse en una <b>barrera de acceso</b>. La Corte Constitucional ha sostenido de forma reiterada que si el usuario carece de capacidad económica para asumirlos, el servicio <b>no puede negarse</b>: la EPS debe prestarlo y buscar el cobro por otra vía. Es consecuencia directa del carácter fundamental del derecho a la salud reconocido en la Ley 1751 de 2015.</p>
   </div>
 
   <div class="note a">
@@ -1108,6 +1163,7 @@ const GLOSS=[
 ["Gestión del riesgo","Aseguramiento","Función central de la EPS: anticipar, prevenir y administrar la probabilidad de enfermar de su población (riesgo en salud) y el costo que ello implica (riesgo financiero)."],
 ["Subsidio a la demanda","Financiación","Modelo introducido por la Ley 100: el dinero público sigue a la persona a través de una prima, en lugar de financiar directamente al hospital (<b>subsidio a la oferta</b>, el modelo anterior a 1993)."],
 ["Alto costo","Salud pública","Patologías de baja frecuencia y alto impacto económico, con protección especial: no generan copagos ni cuotas moderadoras y su riesgo se ajusta entre EPS vía la Cuenta de Alto Costo."],
+["Acuerdo 260 de 2004","Normas","Acuerdo del CNSSS que define el régimen de copagos y cuotas moderadoras: quién los paga, sobre qué servicios, con qué topes y qué poblaciones están exentas. Sigue siendo la norma de referencia; sus valores se indexan cada año."],
 ["Ley 715 de 2001","Normas","Organiza el Sistema General de Participaciones y define las competencias de la Nación, los departamentos y los municipios en salud y educación."],
 ["Ley 1562 de 2012","Normas","Reforma el Sistema General de Riesgos Laborales; actualiza las definiciones de accidente de trabajo y enfermedad laboral."],
 ["Ley 1753 de 2015","Normas","Plan Nacional de Desarrollo 2014–2018. Su artículo 66 creó la ADRES."],
@@ -1162,8 +1218,8 @@ const GLOSS=[
 ["Exclusiones","Beneficios","Listado taxativo de lo que no se financia con recursos públicos, definido por el procedimiento técnico-científico y participativo del art. 15 de la Ley 1751."],
 ["MIPRES","Beneficios","Mi Prescripción. Plataforma en la que el profesional prescribe directamente lo no financiado con UPC. Eliminó los Comités Técnico-Científicos."],
 ["CTC","Beneficios","Comité Técnico-Científico. Instancia que autorizaba servicios No POS. <b>Suprimido</b> con la entrada de MIPRES."],
-["Cuota moderadora","Beneficios","Pago fijo a cargo del <b>cotizante</b> del contributivo, destinado a regular el uso de servicios ambulatorios de baja intensidad."],
-["Copago","Beneficios","Porcentaje del valor del servicio a cargo del <b>beneficiario</b> del contributivo y del grupo B del subsidiado, con topes por evento y por año. Ayuda a financiar el sistema."],
+["Cuota moderadora","Beneficios","Pago de <b>valor fijo</b> a cargo del cotizante <b>y de sus beneficiarios</b> del régimen contributivo, destinado a regular el uso de servicios ambulatorios de baja intensidad. No se cobra nunca en el régimen subsidiado y no tiene topes. Acuerdo 260 de 2004."],
+["Copago","Beneficios","<b>Porcentaje</b> del valor del servicio a cargo del beneficiario del contributivo y del grupo B del subsidiado, con topes por evento y por año. Su fin es cofinanciar el sistema. <b>El cotizante no lo paga nunca.</b> Acuerdo 260 de 2004."],
 ["Períodos mínimos de cotización","Beneficios","Semanas de carencia exigibles para ciertas tecnologías de alto costo. No aplican a urgencias, embarazo, parto ni menores de un año."],
 ["SOGCS","Calidad","Sistema Obligatorio de Garantía de Calidad en Salud. Cuatro componentes: habilitación, PAMEC, acreditación y sistema de información para la calidad."],
 ["Habilitación","Calidad","Cumplimiento y declaración de las condiciones mínimas para prestar un servicio. Es obligatoria y declarativa: se autoevalúa, se inscribe en el REPS y se verifica después."],
@@ -1232,7 +1288,7 @@ const ALIAS=[
   ["SISBÉN IV","SISBÉN IV"],["SISBÉN","SISBÉN IV"],["SG-SST","SG-SST"],["ReTHUS","ReTHUS"],
   ["UPC-C","UPC-C / UPC-S"],["UPC-S","UPC-C / UPC-S"],["MIAS","MIAS / PAIS"],["PAIS","MIAS / PAIS"],
   ["Ley 100","Ley 100 de 1993"],["Ley 1122","Ley 1122 de 2007"],["Ley 1438","Ley 1438 de 2011"],
-  ["Ley 1751","Ley 1751 de 2015"],["Ley 1949","Ley 1949 de 2019"],["Ley 715","Ley 715 de 2001"],
+  ["Ley 1751","Ley 1751 de 2015"],["Ley 1949","Ley 1949 de 2019"],["Ley 715","Ley 715 de 2001"],["Acuerdo 260","Acuerdo 260 de 2004"],
   ["Ley 1562","Ley 1562 de 2012"],["Ley 1753","Ley 1753 de 2015"],["Ley 1819","Ley 1819 de 2016"],
   ["Ley 2294","Ley 2294 de 2023"],["Ley Estatutaria","Ley 1751 de 2015"],
   ["Decreto 780","Decreto 780 de 2016"],["Decreto 858","Decreto 858 de 2025"],
@@ -1411,7 +1467,7 @@ const Q=[
 ["¿Qué es exactamente la UPC?",["Una tarifa que la EPS le paga a la IPS por cada atención","Una prima anual per cápita que la ADRES reconoce a la EPS por cada afiliado","El presupuesto anual asignado a cada hospital público","El tope máximo de gasto anual por paciente"],1,"La UPC es una <b>prima de aseguramiento</b>, no una tarifa ni un techo de gasto del paciente. Se calcula actuarialmente con frecuencias de uso y costo medio, y se ajusta por edad, sexo y zona geográfica."],
 ["¿Cuál de estos NO es un componente del SOGCS?",["Sistema Único de Habilitación","PAMEC","Sistema Único de Acreditación","Sistema Único de Afiliación"],3,"El SOGCS tiene cuatro componentes: habilitación, PAMEC, acreditación y sistema de información para la calidad. La afiliación pertenece a la operación del aseguramiento, no a la calidad."],
 ["La atención inicial de urgencias…",["Requiere autorización previa de la EPS","Solo es obligatoria en IPS públicas","Es obligatoria para toda IPS sin exigir requisito previo alguno","Puede negarse si el paciente no está afiliado"],2,"El art. 14 de la Ley Estatutaria 1751 de 2015 la hace obligatoria y sin ningún requisito previo, en toda IPS pública o privada, con independencia del asegurador o de la capacidad de pago."],
-["¿Quién paga la cuota moderadora?",["El beneficiario del régimen contributivo","El cotizante del régimen contributivo","Todos los afiliados del subsidiado","El empleador"],1,"Cuota moderadora = <b>cotizante</b>, valor fijo, servicios ambulatorios. Copago = <b>beneficiario</b> (y grupo B del subsidiado), porcentaje del valor del servicio."],
+["¿Quién no paga copago jamás?",["El beneficiario del régimen contributivo","El cotizante del régimen contributivo","El afiliado del grupo B del subsidiado","Nadie: todos pagan copago"],1,"Es la regla que no falla: <b>el cotizante nunca paga copago</b>. Sí paga cuota moderadora, igual que sus beneficiarios. El error frecuente es creer que la cuota moderadora es exclusiva del cotizante — la pagan ambos."],
 ["Los presupuestos máximos reemplazaron desde 2020 a…",["La UPC del régimen subsidiado","El mecanismo de recobros por servicios No POS","El Plan de Intervenciones Colectivas","El giro directo"],1,"Antes la EPS pagaba lo No POS y recobraba caso a caso ante el FOSYGA/ADRES. El presupuesto máximo es un techo prospectivo mensual que cambia el incentivo financiero."],
 ["¿Cuál es el estándar de habilitación que más se olvida?",["Talento humano","Infraestructura","Interdependencia","Dotación"],2,"Interdependencia exige que existan los servicios de apoyo indispensables para que el servicio principal sea seguro (una UCI necesita laboratorio e imagenología 24/7). Genera muchos hallazgos en visitas reales."],
 ["La Ley Estatutaria 1751 de 2015 cambió el plan de beneficios de…",["Lista negativa a lista positiva","Lista positiva a lista de exclusiones explícitas","Plan único a planes diferenciados por régimen","Plan obligatorio a plan voluntario"],1,"Pasó de \"solo está cubierto lo que aparece en la lista\" a \"todo está cubierto salvo lo expresamente excluido\" mediante el procedimiento técnico-científico y participativo del art. 15."],

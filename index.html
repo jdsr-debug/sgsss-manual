@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SGSSS · Manual interactivo del sistema de salud colombiano</title>
+<meta name="description" content="Manual interactivo y de consulta rápida del Sistema General de Seguridad Social en Salud de Colombia: UPC, ADRES, habilitación, PBS, regímenes, SOGCS y el estado de la reforma. Actualizado a julio de 2026.">
+<meta name="author" content="Juan D. Serrano">
+<meta name="theme-color" content="#0F6E64">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SGSSS · Manual interactivo del sistema de salud colombiano">
+<meta property="og:description" content="15 módulos, glosario de 125 términos y autoevaluación. Todo el SGSSS explicado y consultable en una sola página. Actualizado a julio de 2026.">
+<meta property="og:locale" content="es_CO">
+<meta property="og:image" content="preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F6E64'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#FBFAF8; --panel:#FFFFFF; --ink:#171A1C; --ink2:#4A5157; --ink3:#818A91;
+  --line:#E5E2DC; --line2:#F0EDE7;
+  --acc:#0F6E64; --acc-bg:#E8F2F0;
+  --warn:#9A5B12; --warn-bg:#FBF2E4;
+  --alert:#9B2C2C; --alert-bg:#FBECEC;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#131517; --panel:#1A1D20; --ink:#ECEAE6; --ink2:#AFB6BB; --ink3:#7B838A;
+  --line:#2C3034; --line2:#232629;
+  --acc:#5FC9BB; --acc-bg:#15302C;
+  --warn:#E0AE6A; --warn-bg:#2E2517;
+  --alert:#E88A8A; --alert-bg:#2E1B1B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+/* ---------- LAYOUT ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.topbar-in{max-width:1500px;margin:0 auto;padding:11px 26px;display:flex;align-items:center;gap:18px}
+.brand{font-weight:640;letter-spacing:-.02em;font-size:15px;white-space:nowrap}
+.brand span{color:var(--ink3);font-weight:420}
+.searchwrap{flex:1;position:relative;max-width:520px}
+#q{width:100%;padding:8px 12px 8px 32px;border:1px solid var(--line);border-radius:8px;
+  background:var(--panel);color:var(--ink);font-family:inherit;font-size:14px;outline:none}
+#q:focus{border-color:var(--acc)}
+.searchwrap::before{content:"⌕";position:absolute;left:11px;top:50%;transform:translateY(-52%);
+  color:var(--ink3);font-size:16px}
+.kbd{font-family:var(--mono);font-size:10.5px;border:1px solid var(--line);border-radius:4px;
+  padding:1.5px 5px;color:var(--ink3);background:var(--panel)}
+.tbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:8px;
+  padding:6px 11px;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.tbtn:hover{border-color:var(--acc);color:var(--acc)}
+
+.shell{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:0}
+nav.side{position:sticky;top:53px;height:calc(100vh - 53px);overflow-y:auto;
+  padding:24px 14px 60px 26px;border-right:1px solid var(--line)}
+nav.side h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);
+  margin:20px 0 7px;font-weight:600}
+nav.side h4:first-child{margin-top:0}
+nav.side a{display:block;padding:4.5px 9px;border-radius:6px;color:var(--ink2);text-decoration:none;
+  font-size:13.5px;border-left:2px solid transparent}
+nav.side a:hover{background:var(--line2);color:var(--ink)}
+nav.side a.on{color:var(--acc);background:var(--acc-bg);font-weight:520}
+main{padding:34px 40px 140px;min-width:0}
+
+/* ---------- TYPOGRAPHY ---------- */
+section{scroll-margin-top:70px;margin-bottom:64px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:7px}
+h1{font-size:31px;line-height:1.18;letter-spacing:-.025em;margin:0 0 10px;font-weight:660}
+h2{font-size:23px;line-height:1.24;letter-spacing:-.02em;margin:0 0 9px;font-weight:640}
+h3{font-size:15.5px;margin:26px 0 9px;font-weight:640;letter-spacing:-.01em}
+.lede{color:var(--ink2);font-size:16px;max-width:74ch;margin:0 0 22px}
+p{max-width:76ch}
+a.ref{color:var(--acc);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--acc) 35%,transparent)}
+hr.rule{border:0;border-top:1px solid var(--line);margin:30px 0}
+
+/* ---------- COMPONENTS ---------- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:17px 19px;margin:12px 0}
+.card h3{margin-top:0}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:5px;
+  background:var(--acc-bg);color:var(--acc);letter-spacing:.02em;vertical-align:middle}
+.tag.w{background:var(--warn-bg);color:var(--warn)}
+.tag.a{background:var(--alert-bg);color:var(--alert)}
+.tag.n{background:var(--line2);color:var(--ink3)}
+
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 16px}
+.stat .n{font-size:21px;font-weight:660;letter-spacing:-.03em;display:block;line-height:1.25}
+.stat .l{font-size:12px;color:var(--ink3);margin-top:3px;display:block;line-height:1.4}
+
+.note{border-left:2.5px solid var(--acc);background:var(--acc-bg);padding:12px 16px;border-radius:0 9px 9px 0;margin:14px 0}
+.note.w{border-color:var(--warn);background:var(--warn-bg)}
+.note.a{border-color:var(--alert);background:var(--alert-bg)}
+.note p{margin:0;max-width:none}
+.note .lab{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;
+  display:block;margin-bottom:4px;opacity:.85}
+
+table{width:100%;border-collapse:collapse;font-size:13.8px;margin:12px 0}
+th{text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--ink3);padding:7px 11px;border-bottom:1px solid var(--line)}
+td{padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.tbl{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin:14px 0}
+.tbl table{margin:0}
+.num{font-family:var(--mono);font-size:13px;white-space:nowrap}
+
+ul.clean{list-style:none;padding:0;margin:8px 0}
+ul.clean li{padding:5px 0 5px 19px;position:relative;border-bottom:1px solid var(--line2)}
+ul.clean li:last-child{border-bottom:0}
+ul.clean li::before{content:"";position:absolute;left:4px;top:14px;width:5px;height:5px;
+  border-radius:50%;background:var(--acc);opacity:.55}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:12px 0}
+ol.steps li{counter-increment:s;position:relative;padding:8px 0 8px 34px;border-bottom:1px solid var(--line2)}
+ol.steps li:last-child{border-bottom:0}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:21px;height:21px;
+  border-radius:50%;background:var(--acc-bg);color:var(--acc);font-family:var(--mono);font-size:11px;
+  display:flex;align-items:center;justify-content:center;font-weight:600}
+
+/* timeline */
+.tl{position:relative;padding-left:26px;margin:18px 0}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1.5px;background:var(--line)}
+.tl .ev{position:relative;padding:9px 0 9px 4px}
+.tl .ev::before{content:"";position:absolute;left:-23.5px;top:17px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--acc)}
+.tl .ev.dim::before{border-color:var(--ink3)}
+.tl .yr{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:600}
+.tl .ev.dim .yr{color:var(--ink3)}
+.tl .ti{font-weight:600;font-size:14.5px;margin:1px 0 2px}
+.tl .tx{font-size:13.5px;color:var(--ink2);max-width:72ch}
+
+/* flow diagram */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:16px 0}
+.fnode{flex:1;min-width:132px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:11px 13px;text-align:left}
+.fnode b{display:block;font-size:13.5px;margin-bottom:2px}
+.fnode small{color:var(--ink3);font-size:11.5px;line-height:1.4;display:block}
+.farrow{display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:17px;
+  padding:0 7px;flex:0 0 auto}
+
+/* accordion */
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:9px 0;overflow:hidden}
+details summary{padding:12px 16px;cursor:pointer;font-weight:580;font-size:14.5px;list-style:none;
+  display:flex;align-items:center;gap:9px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";font-family:var(--mono);color:var(--acc);font-size:15px;width:12px}
+details[open] summary::before{content:"−"}
+details summary:hover{background:var(--line2)}
+details .body{padding:2px 16px 16px 37px;font-size:14px;color:var(--ink2)}
+details .body p{max-width:72ch}
+
+/* glossary */
+.glossctl{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:20px;
+  padding:4px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:8px 0}
+.term .t{font-weight:640;font-size:14.5px}
+.term .d{font-size:13.8px;color:var(--ink2);margin-top:3px}
+.term .m{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:5px}
+
+/* quiz */
+.qz{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.qopt{display:block;width:100%;text-align:left;padding:10px 14px;margin:6px 0;border:1px solid var(--line);
+  background:var(--bg);border-radius:9px;cursor:pointer;font-family:inherit;font-size:14px;color:var(--ink)}
+.qopt:hover{border-color:var(--acc)}
+.qopt.ok{border-color:var(--acc);background:var(--acc-bg);color:var(--acc)}
+.qopt.no{border-color:var(--alert);background:var(--alert-bg);color:var(--alert)}
+.qopt:disabled{cursor:default}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);
+  font-size:11.5px;color:var(--ink3);margin-bottom:12px}
+.bar{height:3px;background:var(--line2);border-radius:2px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--acc);transition:width .3s}
+
+/* search results */
+#results{display:none;position:fixed;inset:53px 0 0;background:var(--bg);z-index:40;overflow-y:auto;
+  padding:28px 26px 80px}
+#results.show{display:block}
+#results .in{max-width:820px;margin:0 auto}
+.hit{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px;
+  margin:9px 0;cursor:pointer}
+.hit:hover{border-color:var(--acc)}
+.hit .where{font-family:var(--mono);font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.08em}
+.hit .txt{font-size:13.8px;color:var(--ink2);margin-top:4px}
+.hit mark{background:color-mix(in srgb,var(--acc) 26%,transparent);color:inherit;border-radius:2px;padding:0 1px}
+
+/* siglas inline */
+abbr.sg{border-bottom:1px dotted color-mix(in srgb,var(--acc) 60%,transparent);text-decoration:none;
+  cursor:help;padding:0 .5px}
+abbr.sg:hover{background:var(--acc-bg);border-radius:3px}
+#pop{position:fixed;z-index:70;max-width:340px;background:var(--panel);border:1px solid var(--line);
+  border-radius:11px;padding:12px 15px;box-shadow:0 10px 30px rgba(0,0,0,.16);display:none;
+  font-size:13.4px;line-height:1.55;color:var(--ink2)}
+#pop.show{display:block}
+#pop b.k{display:block;font-size:14px;margin-bottom:3px;color:var(--ink);font-weight:640}
+#pop i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink3);
+  display:block;margin-top:7px;letter-spacing:.04em}
+
+/* siglario flotante */
+#dockbtn{position:fixed;right:20px;bottom:20px;z-index:62;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);border-radius:22px;padding:9px 15px;font-family:inherit;
+  font-size:13px;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+#dockbtn:hover{border-color:var(--acc);color:var(--acc)}
+#dock{position:fixed;right:20px;bottom:64px;z-index:61;width:330px;max-height:64vh;background:var(--panel);
+  border:1px solid var(--line);border-radius:13px;box-shadow:0 12px 36px rgba(0,0,0,.18);
+  display:none;flex-direction:column;overflow:hidden}
+#dock.show{display:flex}
+#dock .hd{padding:12px 14px 10px;border-bottom:1px solid var(--line2)}
+#dock .hd b{font-size:13.5px}
+#dock .hd small{display:block;color:var(--ink3);font-size:11.5px;margin-top:1px}
+#dock input{width:100%;margin-top:8px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:13px;outline:none}
+#dock input:focus{border-color:var(--acc)}
+#dockl{overflow-y:auto;padding:6px}
+#dockl .it{padding:7px 9px;border-radius:7px;font-size:12.8px;line-height:1.45;color:var(--ink2)}
+#dockl .it:hover{background:var(--line2)}
+#dockl .it b{color:var(--ink);font-weight:620}
+@media(max-width:600px){#dock{left:14px;right:14px;width:auto}}
+@media print{#dock,#dockbtn,#pop{display:none!important}}
+
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px;margin:20px 0 8px}
+.toc a{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+  text-decoration:none;color:var(--ink);display:block}
+.toc a:hover{border-color:var(--acc)}
+.toc a b{display:block;font-size:14px;font-weight:600}
+.toc a small{color:var(--ink3);font-size:12px;line-height:1.4;display:block;margin-top:2px}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--acc)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 0;margin-top:50px;color:var(--ink3);font-size:12.5px}
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  nav.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px 20px}
+  nav.side h4{margin-top:14px}
+  main{padding:24px 20px 90px}
+  .brand span{display:none}
+}
+@media print{nav.side,.topbar{display:none}main{padding:0}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">SGSSS <span>· manual interactivo</span></div>
+    <div class="searchwrap">
+      <input id="q" type="text" placeholder="Buscar concepto, sigla, norma…  (UPC, ADRES, habilitación…)" autocomplete="off">
+    </div>
+    <span class="kbd">/</span>
+    <button class="tbtn" id="theme">◐</button>
+  </div>
+</div>
+
+<div id="results"><div class="in"><h2 id="rescount"></h2><div id="reslist"></div></div></div>
+
+<div class="shell">
+<nav class="side">
+  <h4>Fundamentos</h4>
+  <a href="#panorama">Panorama en 2 minutos</a>
+  <a href="#historia">Línea de tiempo normativa</a>
+  <a href="#principios">Principios y derecho fundamental</a>
+  <a href="#actores">Mapa de actores</a>
+  <h4>Cómo opera</h4>
+  <a href="#regimenes">Regímenes y afiliación</a>
+  <a href="#dinero">El flujo del dinero</a>
+  <a href="#upc">UPC y presupuestos máximos</a>
+  <a href="#beneficios">PBS, exclusiones y MIPRES</a>
+  <a href="#prestacion">Prestación y redes</a>
+  <h4>Calidad y control</h4>
+  <a href="#calidad">SOGCS</a>
+  <a href="#habilitacion">Sistema Único de Habilitación</a>
+  <a href="#ivc">Inspección, vigilancia y control</a>
+  <h4>Salud pública y otros</h4>
+  <a href="#saludpublica">Salud pública y APS</a>
+  <a href="#riesgos">Riesgos laborales (SGRL)</a>
+  <a href="#reforma">Reforma 2023–2026</a>
+  <h4>Herramientas</h4>
+  <a href="#cifras">Cifras clave 2026</a>
+  <a href="#glosario">Glosario y siglario</a>
+  <a href="#quiz">Autoevaluación</a>
+</nav>
+
+<main>
+
+<!-- ============ PANORAMA ============ -->
+<section id="panorama">
+  <div class="eyebrow">Módulo 00</div>
+  <h1>El sistema de salud colombiano, entendido de una vez</h1>
+  <p class="lede">Todo el SGSSS se explica con una sola idea: <b>el Estado recauda plata de todos, la vuelve una prima anual por persona, y se la entrega a un asegurador para que le garantice a esa persona un plan de beneficios prestado por hospitales y clínicas.</b> Los demás conceptos —UPC, ADRES, habilitación, PBS— son piezas de ese mecanismo. Aquí está cada pieza y dónde encaja.</p>
+
+  <div class="note">
+    <span class="lab">Antes de empezar — las 9 siglas que sostienen todo lo demás</span>
+    <p style="font-size:13.6px"><b>SGSSS</b> es el sistema completo. <b>MinSalud</b> lo dirige y <b>Supersalud</b> lo vigila. La <b>ADRES</b> es la caja que recibe y paga todo el dinero. Las <b>EPS</b> son las aseguradoras: reciben una <b>UPC</b> (la prima anual por cada persona) y con ella deben garantizar el <b>PBS</b> (el plan de beneficios, antes llamado <b>POS</b>). Las <b>IPS</b> son los hospitales y clínicas que efectivamente atienden. Con esas nueve entiendes el 80% de cualquier conversación del sector.</p>
+    <p style="font-size:12.6px;color:var(--ink3);margin-top:8px">A lo largo del manual, toda sigla aparece <abbr class="sg" data-k="UPC">subrayada con puntos</abbr>: pasa el cursor por encima (o tócala en el móvil) para ver su definición sin salir de donde vas leyendo. El botón <b>Siglario</b> de la esquina inferior derecha abre la lista completa en un panel flotante.</p>
+  </div>
+
+  <div class="grid g4">
+    <div class="stat"><span class="n">1993</span><span class="l">Ley 100 crea el SGSSS</span></div>
+    <div class="stat"><span class="n">~99%</span><span class="l">Cobertura de aseguramiento</span></div>
+    <div class="stat"><span class="n">$101,3 bill.</span><span class="l">UPC total proyectada 2026</span></div>
+    <div class="stat"><span class="n">≈6,3% PIB</span><span class="l">Gasto en salud 2026</span></div>
+  </div>
+
+  <h3>La cadena completa, en un diagrama</h3>
+  <div class="flow">
+    <div class="fnode"><b>Fuentes</b><small>Cotizaciones, impuestos, SGP, rentas territoriales, SOAT</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>ADRES</b><small>Recauda, afilia el riesgo y paga. Es la "caja" única del sistema</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>EPS / EOC</b><small>Reciben una UPC por afiliado y gestionan el riesgo en salud</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>IPS</b><small>Prestan el servicio. Deben estar habilitadas en el REPS</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>Usuario</b><small>Recibe el PBS; paga copago o cuota moderadora según el caso</small></div>
+  </div>
+
+  <div class="note">
+    <span class="lab">Clave mental</span>
+    <p>Hay tres sistemas distintos que la gente confunde: el <b>SGSSS</b> (salud, Ley 100 Libro II), el <b>SGP</b> (pensiones, Libro I) y el <b>SGRL</b> (riesgos laborales, Libro III). Los tres nacen de la Ley 100 y juntos forman el <b>Sistema de Seguridad Social Integral</b>. Este manual cubre el primero, con una mirada al tercero.</p>
+  </div>
+
+  <h3>Recorrido sugerido</h3>
+  <div class="toc">
+    <a href="#historia"><i>01</i><b>Línea de tiempo</b><small>De la Ley 100 al Decreto 858 de 2025</small></a>
+    <a href="#principios"><i>02</i><b>Principios</b><small>Ley 100 art. 153 vs. Ley Estatutaria 1751</small></a>
+    <a href="#actores"><i>03</i><b>Actores</b><small>Quién es quién y quién le responde a quién</small></a>
+    <a href="#dinero"><i>05</i><b>Flujo del dinero</b><small>De la cotización al giro directo</small></a>
+    <a href="#habilitacion"><i>10</i><b>Habilitación</b><small>Res. 3100/2019 y los 7 estándares</small></a>
+    <a href="#glosario"><i>—</i><b>Glosario</b><small>+90 siglas y conceptos con definición corta</small></a>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section id="historia">
+  <div class="eyebrow">Módulo 01</div>
+  <h2>Línea de tiempo normativa</h2>
+  <p class="lede">No memorices normas sueltas: cada una responde a un problema del momento. Esa es la lógica que hace que se queden.</p>
+
+  <div class="tl">
+    <div class="ev dim">
+      <div class="yr">1991</div>
+      <div class="ti">Constitución Política — arts. 48 y 49</div>
+      <div class="tx">La seguridad social se define como <b>servicio público obligatorio</b> bajo dirección del Estado, y la salud como servicio público a cargo del Estado, con participación de particulares. Es la habilitación constitucional del modelo mixto que vendría después.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">1993</div>
+      <div class="ti">Ley 100 — nace el SGSSS</div>
+      <div class="tx">Sustituye el viejo modelo de subsidio a la oferta (hospitales financiados directamente) por <b>subsidio a la demanda</b> (la plata sigue al paciente vía una prima). Crea EPS, IPS, POS, UPC, los dos regímenes y el FOSYGA. Es el <b>Libro II</b> de la ley.</div>
+    </div>
+    <div class="ev dim">
+      <div class="yr">2001</div>
+      <div class="ti">Ley 715 — Sistema General de Participaciones</div>
+      <div class="tx">Define cómo la Nación transfiere recursos a departamentos y municipios y qué competencias tiene cada nivel territorial en salud. Es la norma que explica por qué una secretaría departamental hace lo que hace.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2007</div>
+      <div class="ti">Ley 1122 — primer ajuste estructural</div>
+      <div class="tx">Crea la <b>CRES</b> (luego liquidada), fortalece la <b>Supersalud</b> dándole funciones jurisdiccionales, sube la cotización al 12,5% y destina un porcentaje mínimo de la UPC-S a la prestación directa.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2008</div>
+      <div class="ti">Sentencia T-760 de la Corte Constitucional</div>
+      <div class="tx">Hito. Declara la salud como <b>derecho fundamental autónomo</b>, ordena unificar los planes de beneficios de ambos regímenes, actualizarlos periódicamente y corregir el sistema de recobros. Casi todo lo que pasó después es cumplimiento de esta sentencia —incluida la nivelación de la UPC subsidiada que sigue vigente en 2026.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2011</div>
+      <div class="ti">Ley 1438 — reforma con enfoque de APS</div>
+      <div class="tx">Reescribe los principios del art. 153, introduce la <b>Atención Primaria en Salud</b>, las redes integradas, la portabilidad nacional, la universalización y el Plan Decenal de Salud Pública. También endurece el régimen sancionatorio.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2015</div>
+      <div class="ti">Ley Estatutaria 1751 — el cambio de paradigma</div>
+      <div class="tx">Eleva la salud a <b>derecho fundamental autónomo e irrenunciable</b> por vía estatutaria. Consagra la autonomía profesional, prohíbe negar atención de urgencias, y da vuelta a la lógica del plan: pasa de "lista de lo cubierto" a <b>lista de lo excluido</b> (todo está cubierto salvo lo expresamente excluido).</div>
+    </div>
+    <div class="ev dim">
+      <div class="yr">2015–2017</div>
+      <div class="ti">Ley 1753 (PND) crea la ADRES</div>
+      <div class="tx">El art. 66 crea la <b>Administradora de los Recursos del SGSSS</b>, que entra en operación el 1 de agosto de 2017 y <b>reemplaza al FOSYGA</b>. Deja de ser una cuenta sin personería y pasa a ser una entidad con patrimonio propio.</div>
+    </div>
+    <div class="ev dim">
+      <div class="yr">2016</div>
+      <div class="ti">Decreto 780 — Decreto Único Reglamentario del sector salud</div>
+      <div class="tx">Compila en un solo cuerpo casi toda la reglamentación dispersa (incluido el antiguo Decreto 1011 de 2006 del SOGCS). Cuando alguien cite "Decreto 1011", hoy lo correcto es citar el <b>Decreto 780 de 2016</b>.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2019</div>
+      <div class="ti">Resolución 3100 — nuevo Sistema Único de Habilitación</div>
+      <div class="tx">Reemplaza la Resolución 2003 de 2014. Define condiciones y estándares para inscribirse en el <b>REPS</b> y habilitar servicios. Sigue vigente en 2026, actualizada por la Resolución 465 de 2025.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2020</div>
+      <div class="ti">Presupuestos máximos reemplazan el recobro No PBS</div>
+      <div class="tx">Se acaba el modelo de recobro caso a caso ante la ADRES. Ahora se gira a la EPS un <b>techo prospectivo</b> para financiar lo no cubierto por la UPC. Cambia radicalmente el incentivo financiero.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2023</div>
+      <div class="ti">Ley 2294 (PND 2022–2026) y radicación de la reforma</div>
+      <div class="tx">El Plan Nacional de Desarrollo instala el modelo preventivo y predictivo basado en APS, y el Gobierno radica el proyecto de reforma estructural al sistema.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2025</div>
+      <div class="ti">Decreto 858 — modelo preventivo, predictivo y resolutivo</div>
+      <div class="tx">Por vía de decreto (sin reforma legal aprobada) se adopta el nuevo modelo de atención: <b>CAPS</b> como puerta de entrada con adscripción territorial, y <b>Equipos Básicos de Salud</b> como dispositivo extramural. Es la pieza normativa más importante del periodo reciente.</div>
+    </div>
+    <div class="ev">
+      <div class="yr">2025–2026</div>
+      <div class="ti">Reforma archivada y vuelta a radicar</div>
+      <div class="tx">La Comisión Séptima del Senado archivó el proyecto en diciembre de 2025. En julio de 2026 el Gobierno radicó <b>un nuevo proyecto de 90 artículos</b> con Fondo Único Público y ADRES fortalecida. <span class="tag w">No es ley</span></div>
+    </div>
+  </div>
+
+  <div class="note w">
+    <span class="lab">Error frecuente</span>
+    <p>Citar como vigentes normas ya derogadas o compiladas: el <b>POS</b> se llama <b>PBS</b> desde 2017; el <b>FOSYGA</b> es <b>ADRES</b> desde 2017; el <b>Decreto 1011 de 2006</b> está compilado en el <b>Decreto 780 de 2016</b>; la <b>Resolución 2003 de 2014</b> fue reemplazada por la <b>3100 de 2019</b>; los <b>Comités Técnico-Científicos (CTC)</b> desaparecieron con MIPRES.</p>
+  </div>
+</section>
+
+<!-- ============ PRINCIPIOS ============ -->
+<section id="principios">
+  <div class="eyebrow">Módulo 02</div>
+  <h2>Principios y el derecho fundamental a la salud</h2>
+  <p class="lede">Hay dos listas de principios que conviven y que se preguntan siempre. La clave es saber a qué norma pertenece cada una y para qué sirve.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>Ley 100/1993, art. 2 — Seguridad social integral</h3>
+      <p style="font-size:13.8px;color:var(--ink2);margin-top:0">Los seis originales, aplicables a todo el sistema (salud, pensiones, riesgos):</p>
+      <ul class="clean">
+        <li><b>Eficiencia</b> — mejor utilización social y económica de los recursos.</li>
+        <li><b>Universalidad</b> — cobertura a todas las personas, sin discriminación, en todas las etapas de la vida.</li>
+        <li><b>Solidaridad</b> — ayuda mutua entre generaciones, sectores y regiones. Es lo que justifica que el sano financie al enfermo.</li>
+        <li><b>Integralidad</b> — cobertura de todas las contingencias que afecten la salud, capacidad económica y condiciones de vida.</li>
+        <li><b>Unidad</b> — articulación de políticas, instituciones, regímenes, procedimientos y prestaciones.</li>
+        <li><b>Participación</b> — intervención de la comunidad en la organización, control, gestión y fiscalización.</li>
+      </ul>
+      <p class="tag n" style="margin-top:8px">Mnemotecnia: E-U-S-I-U-P</p>
+    </div>
+    <div class="card">
+      <h3>Ley 1751/2015 (Estatutaria), art. 6 — Elementos esenciales</h3>
+      <p style="font-size:13.8px;color:var(--ink2);margin-top:0">Los que realmente usa un juez de tutela para decidir. Provienen de la Observación General 14 del Comité DESC:</p>
+      <ul class="clean">
+        <li><b>Disponibilidad</b> — el Estado debe garantizar existencia suficiente de servicios, instituciones, tecnologías y talento humano.</li>
+        <li><b>Aceptabilidad</b> — respeto a la ética médica, la diversidad cultural y las preferencias del paciente.</li>
+        <li><b>Accesibilidad</b> — sin discriminación, con accesibilidad física, asequibilidad económica y acceso a la información.</li>
+        <li><b>Calidad e idoneidad profesional</b> — pertinencia con evidencia científica, personal competente, tecnología apropiada.</li>
+      </ul>
+      <p style="font-size:13.5px;color:var(--ink2)">Además define principios propios: <b>pro homine, equidad, continuidad, oportunidad, prevalencia de derechos, progresividad, libre elección, sostenibilidad, solidaridad, eficiencia, interculturalidad, protección a pueblos indígenas y protección a personas con discapacidad.</b></p>
+      <p class="tag" style="margin-top:8px">Mnemotecnia: D-A-A-C</p>
+    </div>
+  </div>
+
+  <h3>Lo que cambió la Ley Estatutaria (y por qué importa en la práctica)</h3>
+  <div class="tbl"><table>
+    <tr><th>Tema</th><th>Antes (lógica Ley 100)</th><th>Después (Ley 1751)</th></tr>
+    <tr><td>Naturaleza del derecho</td><td>Servicio público / derecho prestacional, fundamental solo por conexidad</td><td><b>Derecho fundamental autónomo e irrenunciable</b></td></tr>
+    <tr><td>Plan de beneficios</td><td>Lista positiva: cubierto lo que está en el POS</td><td><b>Lista negativa</b>: cubierto todo salvo lo expresamente excluido (art. 15)</td></tr>
+    <tr><td>Decisión clínica</td><td>Sujeta a autorización administrativa y CTC</td><td><b>Autonomía profesional</b> (art. 17); se prohíbe la constricción administrativa</td></tr>
+    <tr><td>Urgencias</td><td>Sujetas a verificación de derechos</td><td>Atención de urgencias <b>obligatoria y sin requisito previo alguno</b> (art. 14)</td></tr>
+    <tr><td>Sostenibilidad</td><td>Límite implícito del gasto</td><td>Principio explícito, pero <b>no puede usarse para negar el servicio</b></td></tr>
+  </table></div>
+
+  <div class="note">
+    <span class="lab">Criterios de exclusión — art. 15, Ley 1751</span>
+    <p>Un servicio solo puede excluirse si cumple alguno de estos: <b>(a)</b> tiene finalidad cosmética o suntuaria no relacionada con la función; <b>(b)</b> no existe evidencia científica sobre su seguridad, eficacia o efectividad clínica; <b>(c)</b> no está autorizado por la autoridad competente (INVIMA); <b>(d)</b> está en fase de experimentación; <b>(e)</b> se presta en el exterior. Fuera de esos casos, la exclusión es inconstitucional.</p>
+  </div>
+</section>
+
+<!-- ============ ACTORES ============ -->
+<section id="actores">
+  <div class="eyebrow">Módulo 03</div>
+  <h2>Mapa de actores</h2>
+  <p class="lede">Si entiendes quién dirige, quién financia, quién asegura, quién presta y quién vigila, el resto del sistema se ordena solo. Nadie cumple dos roles al tiempo —salvo excepciones que la ley regula expresamente.</p>
+
+  <h3>Por función</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h3><span class="tag">Dirección</span> Rectoría del sistema</h3>
+      <ul class="clean">
+        <li><b>MinSalud y Protección Social</b> — formula la política, define el PBS, fija la UPC por resolución, expide la reglamentación técnica.</li>
+        <li><b>CNSSS → CRES → MinSalud</b> — la función de regulación pasó del Consejo Nacional a la Comisión de Regulación en Salud (Ley 1122/2007) y, tras su liquidación en 2012, volvió al Ministerio.</li>
+        <li><b>Entidades territoriales</b> — departamentos, distritos y municipios; dirigen el sistema en su jurisdicción, ejecutan el PIC y vigilan la salud pública (Ley 715/2001).</li>
+        <li><b>INVIMA</b> — registro sanitario y vigilancia de medicamentos, dispositivos y alimentos.</li>
+        <li><b>INS</b> — Instituto Nacional de Salud: vigilancia epidemiológica (SIVIGILA), laboratorio de referencia, red de bancos de sangre.</li>
+        <li><b>IETS</b> — Instituto de Evaluación Tecnológica en Salud: evaluaciones que sustentan inclusiones y exclusiones.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="tag">Financiación</span> Administración de recursos</h3>
+      <ul class="clean">
+        <li><b>ADRES</b> — administra el "gran fondo": recauda cotizaciones, hace el proceso de compensación, reconoce la UPC, gira presupuestos máximos y ejecuta el giro directo. Sucesora del FOSYGA desde 2017.</li>
+        <li><b>UGPP</b> — persigue la evasión y elusión de aportes al sistema.</li>
+        <li><b>Entidades territoriales</b> — aportan recursos propios y del SGP al régimen subsidiado.</li>
+      </ul>
+      <h3 style="margin-top:20px">Cuentas que heredó de FOSYGA</h3>
+      <p style="font-size:13.5px;color:var(--ink2)">Las antiguas subcuentas de compensación, solidaridad, promoción y prevención, y <b>ECAT</b> (eventos catastróficos y accidentes de tránsito) hoy operan como cuentas dentro de la ADRES. La cuenta ECAT sigue siendo la que paga la atención de víctimas cuando no hay SOAT o este se agotó.</p>
+    </div>
+    <div class="card">
+      <h3><span class="tag">Aseguramiento</span> Gestión del riesgo</h3>
+      <ul class="clean">
+        <li><b>EPS</b> — Entidad Promotora de Salud. Afilia, recauda, gestiona el riesgo en salud y financiero, organiza la red y garantiza el PBS. Recibe la UPC.</li>
+        <li><b>EOC</b> — Entidades Obligadas a Compensar: cajas de compensación y otras entidades que cumplen función aseguradora.</li>
+        <li><b>Regímenes exceptuados y especiales</b> — FF. MM. y Policía, Magisterio (FOMAG), Ecopetrol y universidades públicas. <b>No están en el SGSSS</b> y no reciben UPC.</li>
+        <li><b>ARL</b> — aseguran el riesgo laboral, no el riesgo común (ver módulo SGRL).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="tag">Prestación</span> Quien atiende al paciente</h3>
+      <ul class="clean">
+        <li><b>IPS</b> — Institución Prestadora de Servicios de Salud: hospitales, clínicas, laboratorios, consultorios.</li>
+        <li><b>ESE</b> — Empresa Social del Estado: IPS pública, con régimen jurídico especial (categoría especial de entidad descentralizada).</li>
+        <li><b>Profesionales independientes</b> y <b>transporte especial de pacientes</b> — también son prestadores y deben habilitarse.</li>
+        <li><b>Objeto social diferente</b> — empresas que prestan servicios de salud a sus trabajadores; también se inscriben en el REPS.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="tag a">Control</span> Inspección y vigilancia</h3>
+      <ul class="clean">
+        <li><b>Supersalud</b> — inspecciona, vigila y controla; sanciona; interviene EPS e IPS; ejerce <b>funciones jurisdiccionales y de conciliación</b>.</li>
+        <li><b>Contraloría</b> — control fiscal de los recursos públicos.</li>
+        <li><b>Procuraduría / Defensoría</b> — control disciplinario y defensa del derecho.</li>
+        <li><b>Direcciones territoriales de salud</b> — vigilan la habilitación de prestadores en su territorio.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="tag">Participación</span> El ciudadano en el sistema</h3>
+      <ul class="clean">
+        <li><b>Asociaciones de usuarios</b>, <b>COPACOS</b> (comités de participación comunitaria), <b>veedurías ciudadanas</b>.</li>
+        <li><b>SIAU</b> — Servicio de Información y Atención al Usuario en cada IPS/EPS.</li>
+        <li><b>Tutela</b> — el mecanismo de facto más usado para acceder a servicios negados.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note w">
+    <span class="lab">Integración vertical</span>
+    <p>La Ley 1122 de 2007 limitó a un <b>30%</b> el gasto del régimen subsidiado que una EPS puede contratar con su propia red (IPS propias). Es el mecanismo clásico contra el conflicto de interés entre asegurar y prestar. El proyecto de reforma de 2026 propone prohibirla del todo.</p>
+  </div>
+</section>
+
+<!-- ============ REGÍMENES ============ -->
+<section id="regimenes">
+  <div class="eyebrow">Módulo 04</div>
+  <h2>Regímenes y afiliación</h2>
+  <p class="lede">Dos regímenes, un mismo plan de beneficios. La diferencia ya no es lo que cubren —eso se unificó tras la T-760— sino <b>quién paga la prima</b>.</p>
+
+  <div class="tbl"><table>
+    <tr><th>&nbsp;</th><th>Régimen Contributivo</th><th>Régimen Subsidiado</th></tr>
+    <tr><td><b>Quién pertenece</b></td><td>Con capacidad de pago: empleados, pensionados, independientes con ingresos ≥ 1 SMLMV</td><td>Población sin capacidad de pago, identificada por SISBÉN IV (grupos A y B) o poblaciones especiales por listado censal</td></tr>
+    <tr><td><b>Quién financia</b></td><td>Cotización del 12,5% del IBC</td><td>Recursos fiscales: SGP, rentas cedidas, recursos propios territoriales y aportes de la Nación (subcuenta de solidaridad)</td></tr>
+    <tr><td><b>Plan</b></td><td colspan="2" style="text-align:center"><b>PBS único y unificado</b> para ambos regímenes desde 2012</td></tr>
+    <tr><td><b>UPC 2026</b></td><td class="num">$1.658.912,01 / año</td><td class="num">$1.541.706,27 / año</td></tr>
+    <tr><td><b>Pagos del usuario</b></td><td>Cuotas moderadoras y copagos según nivel de ingreso</td><td>Solo copagos, y solo para el grupo B; el grupo A y poblaciones protegidas están exentos</td></tr>
+    <tr><td><b>Prestaciones económicas</b></td><td>Incapacidades y licencias de maternidad/paternidad</td><td>No genera prestaciones económicas</td></tr>
+  </table></div>
+
+  <h3>Composición de la cotización (12,5% del IBC)</h3>
+  <div class="grid g3">
+    <div class="card"><h3>Trabajador dependiente</h3><p style="font-size:13.5px;color:var(--ink2);margin:0"><b>4%</b> a cargo del trabajador + <b>8,5%</b> a cargo del empleador.<br><span class="tag w">Ojo</span> Los empleadores están <b>exonerados</b> del 8,5% por los trabajadores que devenguen menos de 10 SMLMV (Ley 1819 de 2016).</p></div>
+    <div class="card"><h3>Independiente</h3><p style="font-size:13.5px;color:var(--ink2);margin:0"><b>12,5%</b> completo a su cargo, calculado sobre un IBC del <b>40% de los ingresos mensuales</b>, con piso de 1 SMLMV y techo de 25 SMLMV.</p></div>
+    <div class="card"><h3>Pensionado</h3><p style="font-size:13.5px;color:var(--ink2);margin:0"><b>12%</b> de la mesada pensional, a su cargo (reducido del 12,5% por la Ley 1250 de 2008).</p></div>
+  </div>
+
+  <h3>Tipos de afiliado</h3>
+  <ul class="clean">
+    <li><b>Cotizante</b> — quien aporta directamente.</li>
+    <li><b>Beneficiario</b> — cónyuge o compañero(a) permanente; hijos menores de 25 años dependientes; hijos con discapacidad sin límite de edad; a falta de estos, padres no pensionados dependientes económicamente.</li>
+    <li><b>Cotizante dependiente</b> — familiar que no cumple requisitos de beneficiario y se afilia pagando un aporte adicional (UPC adicional).</li>
+    <li><b>Afiliado adicional</b> — hasta tercer grado de consanguinidad, con UPC adicional a cargo del cotizante.</li>
+  </ul>
+
+  <h3>Conceptos operativos que siempre se preguntan</h3>
+  <div class="grid g2">
+    <details><summary>Períodos mínimos de cotización (semanas de carencia)</summary><div class="body"><p>Para algunas tecnologías de alto costo y ciertos procedimientos electivos se exigen semanas mínimas cotizadas. Si el afiliado no las cumple, puede pagar un porcentaje del valor del servicio equivalente al porcentaje de semanas faltantes. <b>No aplican</b> a urgencias, atención del embarazo y parto, ni a menores de un año. La Ley 1751 las ha vaciado de contenido en la práctica cuando está en juego la vida o la integridad.</p></div></details>
+    <details><summary>Movilidad vs. portabilidad vs. traslado</summary><div class="body"><p><b>Movilidad</b>: cambiar de régimen (subsidiado ↔ contributivo) <i>sin</i> cambiar de EPS, cuando cambia la capacidad de pago. <b>Portabilidad</b>: recibir atención en cualquier municipio del país conservando la afiliación, cuando se está fuera del domicilio de afiliación. <b>Traslado</b>: cambiar de EPS, permitido después de un tiempo mínimo de permanencia (regla general, 12 meses).</p></div></details>
+    <details><summary>Afiliación de oficio y afiliación transitoria</summary><div class="body"><p>El SAT (Sistema de Afiliación Transaccional) permite que una IPS afilie de oficio a quien llegue sin aseguramiento, para que no se le niegue la atención. Existe además la afiliación de oficio a cargo de entidades territoriales para población pobre no asegurada.</p></div></details>
+    <details><summary>Período de protección laboral y mecanismo de protección al cesante</summary><div class="body"><p>Al terminar la relación laboral, el afiliado y su núcleo conservan cobertura durante un período que depende de las semanas cotizadas previamente (típicamente 1 a 3 meses). El mecanismo de protección al cesante, administrado por las cajas de compensación, mantiene el aseguramiento en salud y pensión hasta por 6 meses.</p></div></details>
+  </div>
+
+  <div class="note">
+    <span class="lab">Poblaciones especiales del subsidiado</span>
+    <p>Se afilian por <b>listado censal</b> sin encuesta SISBÉN: población infantil abandonada a cargo del ICBF, menores desvinculados del conflicto, comunidades indígenas, población desmovilizada, habitantes de calle, personas privadas de la libertad a cargo del INPEC, migrantes con estatus de protección temporal, entre otras.</p>
+  </div>
+</section>
+<!-- ============ DINERO ============ -->
+<section id="dinero">
+  <div class="eyebrow">Módulo 05</div>
+  <h2>El flujo del dinero</h2>
+  <p class="lede">Este es el módulo que desbloquea todo lo demás. Si entiendes por dónde entra y por dónde sale cada peso, entiendes por qué existe cada actor y por qué se pelean.</p>
+
+  <h3>1. De dónde viene la plata</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Régimen contributivo</h3>
+      <ul class="clean">
+        <li><b>Cotizaciones</b> del 12,5% del IBC de afiliados y empleadores.</li>
+        <li><b>Rendimientos financieros</b> de los recursos administrados.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Régimen subsidiado y otros</h3>
+      <ul class="clean">
+        <li><b>SGP – componente de salud</b> (Ley 715/2001): la bolsa territorial más grande.</li>
+        <li><b>Aportes del Presupuesto General de la Nación</b> — hoy la fuente que más crece.</li>
+        <li><b>Rentas cedidas</b> a los departamentos: impuestos al licor, cerveza, cigarrillo y juegos de suerte y azar (Coljuegos).</li>
+        <li><b>Recursos propios</b> de municipios y departamentos.</li>
+        <li><b>SOAT</b> y la cuenta ECAT para accidentes de tránsito y eventos catastróficos.</li>
+        <li><b>Cajas de compensación familiar</b> — porcentaje del aporte parafiscal del 4%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>2. Cómo se convierte en pagos: el proceso de compensación</h3>
+  <ol class="steps">
+    <li><b>Recaudo.</b> La EPS recibe las cotizaciones de sus afiliados a través de la PILA (Planilla Integrada de Liquidación de Aportes).</li>
+    <li><b>Compensación.</b> La EPS declara ante la ADRES sus afiliados válidos y descuenta el valor de las UPC que le corresponden. Si recaudó más de lo que le corresponde en UPC, gira el excedente; si recaudó menos, la ADRES le completa la diferencia. <b>Ese es el corazón del principio de solidaridad</b>: quien gana más aporta más, pero todos valen una UPC.</li>
+    <li><b>Reconocimiento y giro.</b> La ADRES reconoce la UPC mensualizada (LMA — Liquidación Mensual de Afiliados) y ordena el pago.</li>
+    <li><b>Giro directo.</b> Una porción creciente de esos recursos <b>no pasa por la EPS</b>: la ADRES la gira directamente a las IPS y proveedores de tecnologías que la EPS reporta. Nació para el subsidiado y hoy se extiende también al contributivo y a los presupuestos máximos.</li>
+    <li><b>Pago al prestador.</b> Lo que sí pasa por la EPS se paga a la red contratada según la modalidad pactada (capitación, evento, PGP, paquete).</li>
+  </ol>
+
+  <div class="flow">
+    <div class="fnode"><b>Cotizante</b><small>12,5% del IBC vía PILA</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>ADRES</b><small>Compensación · LMA · UPC</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>EPS / EOC</b><small>Contrata red y gestiona riesgo</small></div>
+    <div class="farrow">→</div>
+    <div class="fnode"><b>IPS</b><small>Factura y recibe pago</small></div>
+  </div>
+  <p style="font-size:13px;color:var(--ink3);margin-top:-4px">Vía paralela: <b>ADRES → IPS</b> directamente (giro directo), sin pasar por la tesorería de la EPS.</p>
+
+  <h3>3. Modalidades de contratación y pago EPS ↔ IPS</h3>
+  <div class="tbl"><table>
+    <tr><th>Modalidad</th><th>Cómo funciona</th><th>Riesgo lo asume</th></tr>
+    <tr><td><b>Capitación</b></td><td>Valor fijo por persona/mes por un conjunto de servicios definido, independiente del uso</td><td>La IPS</td></tr>
+    <tr><td><b>Evento</b></td><td>Se paga cada actividad, procedimiento o insumo efectivamente realizado</td><td>La EPS</td></tr>
+    <tr><td><b>Pago Global Prospectivo (PGP)</b></td><td>Suma fija prospectiva para una población y un conjunto de servicios, con metas de resultado</td><td>Compartido</td></tr>
+    <tr><td><b>Paquete / caso / conjunto integral</b></td><td>Precio cerrado por una atención completa (ej. parto, hemodiálisis mensual)</td><td>La IPS, acotado</td></tr>
+  </table></div>
+
+  <h3>4. Lo que paga el usuario de su bolsillo</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Cuota moderadora</h3>
+      <p style="font-size:13.8px;color:var(--ink2);margin:0">Objetivo: <b>regular el uso</b> del servicio. La paga solo el <b>cotizante y sus beneficiarios del contributivo</b>. Se cobra en consulta externa, consulta odontológica, exámenes de laboratorio ambulatorios y entrega de medicamentos ambulatorios. Valor fijo por evento.</p>
+    </div>
+    <div class="card">
+      <h3>Copago</h3>
+      <p style="font-size:13.8px;color:var(--ink2);margin:0">Objetivo: <b>ayudar a financiar</b> el sistema. Lo pagan los <b>beneficiarios</b> del contributivo y los afiliados del <b>grupo B del subsidiado</b>. Es un porcentaje del valor del servicio, con topes por evento y por año. Nunca se cobra al cotizante por sí mismo.</p>
+    </div>
+  </div>
+
+  <div class="note w">
+    <span class="lab">Regla de oro para no confundirlas</span>
+    <p><b>Cuota moderadora = cotizante, valor fijo, servicios ambulatorios de baja intensidad.</b><br><b>Copago = beneficiario, porcentaje del valor, servicios de mayor complejidad.</b> Nunca se cobran ambas por el mismo servicio.</p>
+  </div>
+
+  <div class="note a">
+    <span class="lab">Exenciones absolutas</span>
+    <p>No se cobra copago ni cuota moderadora en: <b>servicios de promoción y prevención</b>, programas de control de enfermedades transmisibles, <b>enfermedades catastróficas o de alto costo</b>, atención inicial de urgencias, atención en el marco de la Ley 1388 (cáncer infantil), víctimas del conflicto armado y de violencia sexual, población en condición de discapacidad mental, adultos mayores en centros de protección, población infantil abandonada, y afiliados del <b>grupo A del subsidiado</b>.</p>
+  </div>
+</section>
+
+<!-- ============ UPC ============ -->
+<section id="upc">
+  <div class="eyebrow">Módulo 06</div>
+  <h2>UPC y presupuestos máximos</h2>
+  <p class="lede">La UPC es el concepto más importante y peor entendido del sistema. No es un presupuesto, ni una tarifa, ni un techo de gasto para el paciente: es <b>una prima de seguro</b>.</p>
+
+  <div class="card">
+    <h3>Qué es exactamente la UPC</h3>
+    <p style="margin-top:0">La <b>Unidad de Pago por Capitación</b> es el valor anual que la ADRES reconoce a una EPS por cada persona afiliada, para que le garantice todo el plan de beneficios durante ese año, use mucho o no use nada. Se calcula actuarialmente con la <b>frecuencia de uso</b> y el <b>costo medio</b> de los servicios, a partir de la información que las EPS reportan (suficiencia de la UPC). El MinSalud la fija cada año por resolución.</p>
+    <p><b>Implicación central:</b> la EPS asume el riesgo. Si sus afiliados gastan menos que la UPC recibida, gana; si gastan más, pierde. Todo el debate sobre "suficiencia de la UPC" es sobre si esa prima alcanza para cubrir el costo real de la enfermedad.</p>
+  </div>
+
+  <h3>Ajustes que modifican la UPC recibida</h3>
+  <ul class="clean">
+    <li><b>Estructura de riesgo</b> — la UPC se ajusta por <b>grupo etario</b> y <b>sexo</b>: un afiliado de 75 años vale varias veces lo que uno de 20.</li>
+    <li><b>Zona geográfica</b> — hay ponderadores por <b>zona especial de dispersión</b>, ciudades y aglomeraciones, y resto del país, para reconocer el mayor costo de operar en territorios alejados.</li>
+    <li><b>Reconocimiento por gestión</b> — porcentajes condicionados al cumplimiento de metas de promoción y prevención y de reporte de información.</li>
+  </ul>
+
+  <h3>Valores vigentes 2026 <span class="tag">Resolución 2764 de 2025</span></h3>
+  <div class="grid g4">
+    <div class="stat"><span class="n">$1.658.912</span><span class="l">UPC contributivo / año (día: $4.608,09) · +9,03%</span></div>
+    <div class="stat"><span class="n">$1.541.706</span><span class="l">UPC subsidiado / año (día: $4.282,42) · +16,49%</span></div>
+    <div class="stat"><span class="n">12,94%</span><span class="l">Incremento ponderado global</span></div>
+    <div class="stat"><span class="n">95%</span><span class="l">Meta de prima pura subsidiada frente a la contributiva</span></div>
+  </div>
+  <p style="font-size:13.5px;color:var(--ink2)">La UPC subsidiada sube mucho más que la contributiva porque la Corte Constitucional ordenó <b>equiparar la prima pura del subsidiado al 95% de la del contributivo</b> (Sentencia T-760 de 2008, Auto 411 de 2016 y Autos 007 y 2049 de 2025). La bolsa total pasa de ~$89,8 billones en 2025 a más de <b>$101,3 billones en 2026</b>.</p>
+
+  <hr class="rule">
+
+  <h3>Presupuestos máximos: lo que la UPC no cubre</h3>
+  <div class="card">
+    <p style="margin-top:0">Existen tecnologías y servicios que están en el ámbito del derecho pero <b>no fueron incluidos en el cálculo de la UPC</b> —típicamente medicamentos de muy alto costo, huérfanos o de uso muy poco frecuente. Antes de 2020 la EPS los pagaba y luego <b>recobraba</b> caso por caso ante el FOSYGA/ADRES, un mecanismo lento, litigioso y capturado por el fraude.</p>
+    <p>Desde 2020 se reemplazó por el <b>presupuesto máximo</b>: un monto <b>prospectivo</b> que la ADRES gira mensualmente a cada EPS para financiar todo ese universo No PBS. Si la EPS gestiona bien y negocia precios, le alcanza; si no, el faltante es suyo. Es el mismo cambio de incentivo que introdujo la UPC, aplicado al No PBS.</p>
+  </div>
+
+  <div class="tbl"><table>
+    <tr><th>&nbsp;</th><th>UPC</th><th>Presupuesto máximo</th></tr>
+    <tr><td>Qué financia</td><td>El PBS completo</td><td>Servicios y tecnologías no financiados con UPC y no excluidos</td></tr>
+    <tr><td>Unidad de cálculo</td><td>Por afiliado / año</td><td>Por EPS / mes, según su población y perfil</td></tr>
+    <tr><td>Prescripción</td><td>Orden médica ordinaria</td><td>Debe registrarse en <b>MIPRES</b></td></tr>
+    <tr><td>Naturaleza</td><td>Prima de aseguramiento</td><td>Techo prospectivo de financiación</td></tr>
+  </table></div>
+
+  <div class="note">
+    <span class="lab">Novedad 2026</span>
+    <p>Mediante la <b>Resolución 0107427 de 2026</b>, la ADRES reglamentó el <b>giro directo de los presupuestos máximos</b>: los recursos ya no pasan necesariamente por la EPS, sino que se giran directamente a las IPS y proveedores de tecnologías que la EPS nomine, con base en lo reportado en MIPRES. Es una de las medidas más relevantes del año para el flujo de caja de proveedores de alto costo.</p>
+  </div>
+
+  <h3>Fuera de la UPC y fuera del presupuesto máximo</h3>
+  <p style="font-size:13.8px;color:var(--ink2)">Recuerda que también existen bolsas independientes: <b>ECAT/SOAT</b> para víctimas de accidentes de tránsito y eventos catastróficos; el <b>PIC</b>, financiado por las entidades territoriales para intervenciones colectivas; y las <b>prestaciones económicas</b> (incapacidades y licencias), que se financian con la cotización pero no con la UPC de servicios.</p>
+</section>
+
+<!-- ============ BENEFICIOS ============ -->
+<section id="beneficios">
+  <div class="eyebrow">Módulo 07</div>
+  <h2>PBS, exclusiones y MIPRES</h2>
+  <p class="lede">Desde la Ley Estatutaria, la pregunta correcta no es "¿está cubierto?" sino <b>"¿está excluido?"</b>. Ese giro es el que hay que interiorizar.</p>
+
+  <div class="grid g3">
+    <div class="card"><h3>PBS financiado con UPC</h3><p style="font-size:13.5px;color:var(--ink2);margin:0">El listado de servicios, procedimientos y medicamentos cuya financiación ya está incorporada en el cálculo de la prima. Se actualiza anualmente por resolución del MinSalud. Antes se llamaba <b>POS</b>.</p></div>
+    <div class="card"><h3>No financiado con UPC</h3><p style="font-size:13.5px;color:var(--ink2);margin:0">Está cubierto por el derecho pero se paga con <b>presupuestos máximos</b>. Requiere prescripción en <b>MIPRES</b>. No es "no cubierto": es "cubierto por otra bolsa".</p></div>
+    <div class="card"><h3>Excluido</h3><p style="font-size:13.5px;color:var(--ink2);margin:0">Listado explícito y taxativo, construido mediante el <b>procedimiento técnico-científico y participativo</b> del art. 15 de la Ley 1751. No se financia con recursos públicos.</p></div>
+  </div>
+
+  <h3>MIPRES en una frase</h3>
+  <div class="card">
+    <p style="margin-top:0">El <b>Mi Prescripción</b> es la plataforma en la que el profesional de la salud —bajo su autonomía y responsabilidad— prescribe directamente lo no financiado con UPC, sin pasar por un comité ni por autorización administrativa previa. <b>Eliminó los CTC.</b> Es simultáneamente la herramienta de prescripción, el registro de trazabilidad y la fuente de datos con la que se calculan y auditan los presupuestos máximos.</p>
+  </div>
+
+  <h3>Rutas de acceso cuando se niega un servicio</h3>
+  <ol class="steps">
+    <li><b>Reclamación ante la EPS</b> y su SIAU. Registro de la solicitud.</li>
+    <li><b>Supersalud</b> — vía PQRD, o vía la <b>función jurisdiccional</b>, que permite resolver conflictos de cobertura con fuerza de sentencia y sin abogado.</li>
+    <li><b>Acción de tutela</b> — el mecanismo constitucional. Sigue siendo masivo pese a que la Ley 1751 buscó reducirlo.</li>
+    <li><b>Desacato</b> — cuando la tutela se falla y no se cumple.</li>
+  </ol>
+
+  <div class="note">
+    <span class="lab">Concepto clave: "recobro" ya casi no existe</span>
+    <p>El recobro caso a caso quedó reducido a lo residual (principalmente fallos de tutela por servicios <b>excluidos</b>, que la ADRES paga por orden judicial). Si en un texto reciente ves "recobros" como el mecanismo principal de financiación del No PBS, ese texto está desactualizado.</p>
+  </div>
+</section>
+
+<!-- ============ PRESTACIÓN ============ -->
+<section id="prestacion">
+  <div class="eyebrow">Módulo 08</div>
+  <h2>Prestación de servicios y redes</h2>
+
+  <h3>Niveles de complejidad</h3>
+  <div class="tbl"><table>
+    <tr><th>Nivel</th><th>Qué resuelve</th><th>Ejemplos</th></tr>
+    <tr><td><b>Baja complejidad</b></td><td>Atención por medicina general, odontología, enfermería; promoción y prevención; urgencias básicas</td><td>Centro de salud, CAPS, hospital local</td></tr>
+    <tr><td><b>Mediana complejidad</b></td><td>Especialidades básicas: medicina interna, pediatría, ginecobstetricia, cirugía general, anestesiología</td><td>Hospital regional</td></tr>
+    <tr><td><b>Alta complejidad</b></td><td>Subespecialidades, UCI, trasplantes, cirugía de alta tecnología</td><td>Hospital universitario, clínica de cuarto nivel</td></tr>
+  </table></div>
+
+  <h3>Redes Integrales de Prestadores de Servicios de Salud (RIPSS)</h3>
+  <p>La EPS no presta: <b>organiza y contrata una red</b> que debe ser habilitada como tal por el Ministerio, con criterios de suficiencia, accesibilidad geográfica, integralidad y capacidad resolutiva. La red debe garantizar todos los niveles de complejidad para todos sus afiliados en su ámbito territorial.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>Referencia y contrarreferencia</h3>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0"><b>Referencia</b>: envío del paciente desde un prestador de menor capacidad resolutiva a uno de mayor. <b>Contrarreferencia</b>: la devolución al prestador de origen con la respuesta y el plan de manejo. El sistema de referencia es responsabilidad de la EPS; la demora en asignar cama o cupo es una de las causas más frecuentes de tutela y de sanción.</p>
+    </div>
+    <div class="card">
+      <h3>Atención inicial de urgencias</h3>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0">Es <b>obligatoria para toda IPS</b>, pública o privada, tenga o no contrato con la EPS del paciente, y <b>sin exigir ningún requisito previo</b> (art. 14, Ley 1751). Negarla configura falta grave y puede tener consecuencias penales. El cobro se resuelve después, entre instituciones.</p>
+    </div>
+  </div>
+
+  <h3>Auditoría de cuentas y glosas</h3>
+  <p style="font-size:13.8px;color:var(--ink2)">La IPS factura, la EPS audita y puede <b>glosar</b> (objetar total o parcialmente) por causales tipificadas: facturación, tarifas, soportes, autorización, cobertura, pertinencia médica y calidad del registro. Hay plazos legales para formular la glosa, responderla y conciliarla; vencidos, la obligación se hace exigible. La factura electrónica y el <b>RIPS</b> son hoy el soporte estándar.</p>
+</section>
+
+<!-- ============ CALIDAD ============ -->
+<section id="calidad">
+  <div class="eyebrow">Módulo 09</div>
+  <h2>SOGCS — Sistema Obligatorio de Garantía de Calidad</h2>
+  <p class="lede">Cuatro componentes, y solo uno de ellos es obligatorio para operar. Confundirlos es el error más común del tema.</p>
+
+  <div class="grid g4">
+    <div class="card"><h3>1 · Habilitación</h3><p style="font-size:13.2px;color:var(--ink2);margin:0"><span class="tag a">Obligatorio</span><br>Condiciones mínimas para poder prestar. Sin ella, el servicio es ilegal.</p></div>
+    <div class="card"><h3>2 · PAMEC</h3><p style="font-size:13.2px;color:var(--ink2);margin:0"><span class="tag a">Obligatorio</span><br>Auditoría para el mejoramiento continuo. Ciclo de autocontrol, auditoría interna y externa.</p></div>
+    <div class="card"><h3>3 · Acreditación</h3><p style="font-size:13.2px;color:var(--ink2);margin:0"><span class="tag">Voluntario</span><br>Estándares superiores de excelencia. Otorgada por el ente acreditador (ICONTEC).</p></div>
+    <div class="card"><h3>4 · Sistema de Información</h3><p style="font-size:13.2px;color:var(--ink2);margin:0"><span class="tag a">Obligatorio</span><br>Indicadores de calidad reportados y publicados para permitir la comparación y la libre elección.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="lab">Marco normativo</span>
+    <p>El SOGCS nació con el <b>Decreto 1011 de 2006</b>, hoy <b>compilado en el Decreto 780 de 2016</b> (Decreto Único Reglamentario del Sector Salud). La habilitación se desarrolla en la <b>Resolución 3100 de 2019</b>, actualizada por la <b>Resolución 465 de 2025</b>; la acreditación, en la <b>Resolución 5095 de 2018</b>; los indicadores, en la <b>Resolución 256 de 2016</b>.</p>
+  </div>
+
+  <h3>Las cuatro características de la calidad en salud</h3>
+  <p style="font-size:13.8px;color:var(--ink2)"><b>Accesibilidad</b> (posibilidad de obtener el servicio) · <b>Oportunidad</b> (obtenerlo sin retrasos que pongan en riesgo) · <b>Seguridad</b> (minimizar el riesgo de eventos adversos) · <b>Pertinencia</b> (que sea el servicio que el paciente requiere) · <b>Continuidad</b> (secuencia lógica y sin interrupción).</p>
+
+  <h3>Seguridad del paciente</h3>
+  <p style="font-size:13.8px;color:var(--ink2)">Política transversal del SOGCS. Distingue: <b>incidente</b> (evento que no alcanza al paciente), <b>evento adverso</b> (daño no intencional derivado de la atención, prevenible o no) y <b>evento centinela</b> (aquel de tal gravedad que exige investigación inmediata). Se apoya en los paquetes instruccionales del MinSalud y en una cultura de reporte no punitiva.</p>
+</section>
+
+<!-- ============ HABILITACIÓN ============ -->
+<section id="habilitacion">
+  <div class="eyebrow">Módulo 10</div>
+  <h2>Sistema Único de Habilitación</h2>
+  <p class="lede">Es el permiso de existencia de un servicio de salud en Colombia. Todo lo demás (contratar con una EPS, facturar, acreditarse) depende de estar habilitado.</p>
+
+  <div class="card">
+    <h3>Cómo funciona en la práctica</h3>
+    <p style="margin-top:0">La habilitación es <b>declarativa</b>: el prestador se <b>autoevalúa</b> frente a los estándares, declara en el <b>REPS</b> que los cumple y queda habilitado desde ese momento. La verificación de la autoridad territorial <b>es posterior</b>. El trámite es gratuito. La declaración tiene una vigencia (típicamente 4 años) y debe renovarse; también debe actualizarse ante cualquier novedad de servicios, sede o capacidad instalada.</p>
+  </div>
+
+  <h3>Las tres condiciones de habilitación</h3>
+  <div class="grid g3">
+    <div class="card"><h3>Capacidad técnico-administrativa</h3><p style="font-size:13.2px;color:var(--ink2);margin:0">Existencia legal del prestador y su representación: cámara de comercio, RUT, registro de la sede.</p></div>
+    <div class="card"><h3>Suficiencia patrimonial y financiera</h3><p style="font-size:13.2px;color:var(--ink2);margin:0">Capacidad de operar de forma sostenible y de responder por sus obligaciones.</p></div>
+    <div class="card"><h3>Capacidad tecnológica y científica</h3><p style="font-size:13.2px;color:var(--ink2);margin:0">Es el núcleo: se despliega en <b>siete estándares</b> aplicables a cada servicio.</p></div>
+  </div>
+
+  <h3>Los siete estándares de la capacidad tecnológica y científica</h3>
+  <ol class="steps">
+    <li><b>Talento humano</b> — perfiles, cantidad, formación y registro (ReTHUS) del personal requerido para cada servicio.</li>
+    <li><b>Infraestructura</b> — áreas, ambientes, condiciones físicas y sanitarias del inmueble.</li>
+    <li><b>Dotación</b> — equipos biomédicos requeridos, con mantenimiento y calibración vigentes.</li>
+    <li><b>Medicamentos, dispositivos médicos e insumos</b> — gestión de selección, adquisición, almacenamiento, distribución y farmacovigilancia / tecnovigilancia.</li>
+    <li><b>Procesos prioritarios</b> — protocolos y guías documentados de los procesos asistenciales críticos, incluida la seguridad del paciente.</li>
+    <li><b>Historia clínica y registros</b> — existencia, contenido mínimo, custodia, confidencialidad y retención documental.</li>
+    <li><b>Interdependencia</b> — servicios de apoyo que necesariamente deben existir (propios o contratados) para que el servicio principal sea seguro. Ej.: una UCI necesita laboratorio e imagenología disponibles 24/7.</li>
+  </ol>
+
+  <div class="note w">
+    <span class="lab">Mnemotecnia</span>
+    <p><b>T-I-D-M-P-H-I</b> — "<b>T</b>alento, <b>I</b>nfraestructura, <b>D</b>otación, <b>M</b>edicamentos, <b>P</b>rocesos, <b>H</b>istoria clínica, <b>I</b>nterdependencia". El que más se olvida en los exámenes es <b>interdependencia</b>, y es justamente el que más glosas y hallazgos genera en visitas reales.</p>
+  </div>
+
+  <h3>Quién se inscribe en el REPS</h3>
+  <ul class="clean">
+    <li><b>Instituciones Prestadoras de Servicios de Salud (IPS)</b>, públicas y privadas.</li>
+    <li><b>Profesionales independientes</b> de salud.</li>
+    <li><b>Servicios de transporte especial de pacientes</b> (ambulancias).</li>
+    <li><b>Entidades con objeto social diferente</b> que prestan servicios de salud (ej. servicios médicos internos de una empresa).</li>
+  </ul>
+
+  <div class="note">
+    <span class="lab">Qué está cambiando</span>
+    <p>El MinSalud adelanta un proyecto de resolución que <b>reemplazaría la 3100</b>: reorganiza las visitas de verificación, endurece la trazabilidad, e incorpora reglas específicas para <b>telemedicina</b> e interoperabilidad de la historia clínica. Se enmarca en la <b>Política Nacional de Calidad en Salud 2026–2035</b>. Verifica siempre la versión vigente antes de una autoevaluación real.</p>
+  </div>
+</section>
+
+<!-- ============ IVC ============ -->
+<section id="ivc">
+  <div class="eyebrow">Módulo 11</div>
+  <h2>Inspección, vigilancia y control</h2>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>Ejes de vigilancia de la Supersalud</h3>
+      <ul class="clean">
+        <li><b>Financiamiento</b> — que los recursos existan, fluyan y se usen para lo que son.</li>
+        <li><b>Aseguramiento</b> — que las EPS cumplan condiciones de habilitación financiera y de operación.</li>
+        <li><b>Prestación y atención al usuario</b> — oportunidad, accesibilidad, calidad.</li>
+        <li><b>Atención al usuario y participación social</b>.</li>
+        <li><b>Acciones y medidas especiales</b> — vigilancia especial, intervención forzosa administrativa para administrar o para liquidar.</li>
+        <li><b>Información</b> y <b>focalización de subsidios</b>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Función jurisdiccional</h3>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0">Introducida por la <b>Ley 1122 de 2007</b> (art. 41) y fortalecida por la <b>Ley 1949 de 2019</b>. Permite a la Supersalud actuar <b>como juez</b> en conflictos de: cobertura del PBS, reconocimiento de prestaciones económicas, multiafiliación, movilidad y libre elección, y conflictos de conexidad entre entidades. Es gratuita, no requiere abogado y su decisión tiene fuerza de sentencia.</p>
+      <p style="font-size:13.5px;color:var(--ink2)">La Ley 1949 también elevó sustancialmente el <b>tope de las multas</b> y amplió el catálogo de conductas sancionables.</p>
+    </div>
+  </div>
+
+  <h3>Situación actual del IVC <span class="tag w">julio 2026</span></h3>
+  <p>Un número inédito de aseguradoras opera bajo <b>intervención forzosa administrativa</b> de la Supersalud —entre ellas Nueva EPS, Coosalud, Famisanar, Asmet Salud, Emssanar, SOS, Savia Salud y Capresoca—, que en conjunto concentran una porción mayoritaria de los afiliados del país. La Contraloría ha advertido que las intervenidas <b>no muestran recuperación estructural</b>, y en julio de 2026 la Supersalud ordenó un <b>plan de choque obligatorio</b> a Nueva EPS, Salud Total, Sanitas y EPS Sura por represamiento en la asignación de citas: entre esas cuatro concentraban el 55% de las reclamaciones recibidas.</p>
+
+  <div class="note a">
+    <span class="lab">Por qué importa esto conceptualmente</span>
+    <p>La intervención masiva rompe de hecho el modelo original: si el Estado administra directamente a las aseguradoras que debía vigilar, el rol de "asegurador privado que gestiona riesgo" queda desdibujado. Ese es exactamente el argumento central del debate de reforma, en ambos sentidos: unos lo leen como prueba del fracaso del aseguramiento, otros como consecuencia de una UPC insuficiente.</p>
+  </div>
+</section>
+
+<!-- ============ SALUD PÚBLICA ============ -->
+<section id="saludpublica">
+  <div class="eyebrow">Módulo 12</div>
+  <h2>Salud pública y atención primaria</h2>
+  <p class="lede">Es el brazo colectivo del sistema: no se financia con UPC, no lo gestiona la EPS y responde a una lógica territorial, no de aseguramiento.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>Los tres planes que hay que distinguir</h3>
+      <ul class="clean">
+        <li><b>PDSP</b> — Plan Decenal de Salud Pública. Marco estratégico a diez años, con dimensiones prioritarias. Vigente: 2022–2031.</li>
+        <li><b>PIC</b> — Plan de Intervenciones Colectivas. Ejecutado y financiado por la <b>entidad territorial</b>, cubre intervenciones poblacionales (no individuales): jornadas, vigilancia, información, educación, caracterización.</li>
+        <li><b>PTS</b> — Plan Territorial de Salud. Instrumento de planeación de cada departamento y municipio, articulado al PDSP y al plan de desarrollo territorial.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Vigilancia e información</h3>
+      <ul class="clean">
+        <li><b>SIVIGILA</b> — sistema de vigilancia en salud pública, operado por el INS. Notificación obligatoria de eventos de interés.</li>
+        <li><b>ASIS</b> — Análisis de Situación de Salud. Diagnóstico territorial que sustenta la planeación.</li>
+        <li><b>RIPS</b> — Registro Individual de Prestación de Servicios. Dato transaccional de cada atención; base del cálculo de la UPC.</li>
+        <li><b>SISPRO</b> — Sistema Integral de Información de la Protección Social. La bodega de datos del sector.</li>
+        <li><b>Cuenta de Alto Costo</b> — organismo técnico que gestiona información y ajusta riesgo entre EPS para patologías de alto costo (VIH, ERC, cáncer, hemofilia, artritis).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Rutas Integrales de Atención en Salud (RIAS)</h3>
+  <p style="font-size:13.8px;color:var(--ink2)">La <b>Resolución 3280 de 2018</b> adoptó los lineamientos técnicos de la <b>Ruta de Promoción y Mantenimiento de la Salud</b> (por curso de vida: primera infancia, infancia, adolescencia, juventud, adultez, vejez) y de la <b>Ruta Materno-Perinatal</b>. Son de obligatorio cumplimiento para EPS e IPS y definen atenciones, frecuencias y responsables. Es la norma más consultada en la práctica asistencial diaria.</p>
+
+  <h3>El modelo vigente: Decreto 858 de 2025</h3>
+  <div class="card">
+    <p style="margin-top:0">Adopta el <b>Modelo de Salud Preventivo, Predictivo y Resolutivo</b>. Sus dos piezas operativas:</p>
+    <ul class="clean">
+      <li><b>CAPS</b> — Centros de Atención Primaria en Salud. Puerta de entrada obligatoria del sistema, con <b>población adscrita territorialmente</b>. Integran toda la baja complejidad y parte de la mediana.</li>
+      <li><b>EBS</b> — Equipos Básicos de Salud. Dispositivo extramural que caracteriza familias y territorios, hace seguimiento y acerca la atención al domicilio. A 2026 se reportan más de <b>14.400 equipos</b> operando en los 32 departamentos y más de 1.100 municipios.</li>
+    </ul>
+    <p>Es la mayor transformación del modelo de atención desde MIAS (Res. 429/2016) y MAITE (Res. 2626/2019), y se logró <b>sin reforma legal</b>, por vía reglamentaria.</p>
+  </div>
+
+  <h3>Predecesores del modelo (para no confundirse en la literatura)</h3>
+  <div class="tbl"><table>
+    <tr><th>Sigla</th><th>Norma</th><th>Idea central</th></tr>
+    <tr><td><b>PAIS / MIAS</b></td><td>Res. 429 de 2016</td><td>Política de Atención Integral en Salud y su Modelo Integral; introduce las RIAS y la gestión integral del riesgo.</td></tr>
+    <tr><td><b>MAITE</b></td><td>Res. 2626 de 2019</td><td>Modelo de Acción Integral Territorial: reemplaza a MIAS y organiza la acción por líneas territoriales.</td></tr>
+    <tr><td><b>Preventivo y predictivo</b></td><td>Ley 2294/2023 y Decreto 858/2025</td><td>CAPS + Equipos Básicos de Salud, adscripción territorial y enfoque poblacional. <span class="tag">Vigente</span></td></tr>
+  </table></div>
+</section>
+
+<!-- ============ RIESGOS ============ -->
+<section id="riesgos">
+  <div class="eyebrow">Módulo 13</div>
+  <h2>Sistema General de Riesgos Laborales</h2>
+  <p class="lede">Es un sistema distinto (Libro III de la Ley 100, reformado por la Ley 1562 de 2012), pero se cruza permanentemente con el SGSSS. Vale la pena tener claro el límite.</p>
+
+  <div class="tbl"><table>
+    <tr><th>&nbsp;</th><th>SGSSS (EPS)</th><th>SGRL (ARL)</th></tr>
+    <tr><td>Qué cubre</td><td>Enfermedad general y maternidad</td><td><b>Accidente de trabajo</b> y <b>enfermedad laboral</b></td></tr>
+    <tr><td>Quién paga</td><td>Cotización 12,5% compartida</td><td><b>100% el empleador</b>, entre 0,348% y 8,7% del IBC según clase de riesgo (I a V)</td></tr>
+    <tr><td>Prestaciones asistenciales</td><td>Sujetas a copagos y cuotas moderadoras</td><td><b>Sin copagos ni cuotas moderadoras</b>, cobertura integral</td></tr>
+    <tr><td>Incapacidad temporal</td><td>66,67% del IBC desde el día 3 (los 2 primeros los paga el empleador)</td><td><b>100% del IBC desde el día siguiente</b> al accidente</td></tr>
+    <tr><td>Calificación del origen</td><td colspan="2">Primera instancia: IPS/EPS/ARL. Luego: <b>Junta Regional</b> y <b>Junta Nacional</b> de Calificación de Invalidez</td></tr>
+  </table></div>
+
+  <div class="note">
+    <span class="lab">Concepto puente</span>
+    <p>Cuando hay controversia sobre el origen (¿común o laboral?), <b>la atención no puede suspenderse</b>: se presta y la controversia se resuelve después entre las administradoras. El <b>SG-SST</b> (Decreto 1072 de 2015) es el sistema de gestión que la empresa debe implementar; es la contraparte preventiva del aseguramiento de la ARL.</p>
+  </div>
+</section>
+
+<!-- ============ REFORMA ============ -->
+<section id="reforma">
+  <div class="eyebrow">Módulo 14</div>
+  <h2>La reforma a la salud: estado a julio de 2026</h2>
+  <div class="note a">
+    <span class="lab">Advertencia de vigencia</span>
+    <p>Nada de lo descrito en este módulo como "propuesta" es derecho vigente. <b>La Ley 100 y su desarrollo siguen siendo el marco legal aplicable.</b> Lo que sí está vigente son los cambios introducidos por vía reglamentaria, principalmente el Decreto 858 de 2025 y las resoluciones de giro directo de la ADRES.</p>
+  </div>
+
+  <h3>Cronología del trámite</h3>
+  <div class="tl">
+    <div class="ev"><div class="yr">Feb 2023</div><div class="ti">Radicación del primer proyecto (PL 339)</div><div class="tx">Propuesta original de sustitución del aseguramiento por un modelo público con Fondo Único.</div></div>
+    <div class="ev"><div class="yr">2024</div><div class="ti">Aprobación en Cámara, bloqueo en Senado</div><div class="tx">El texto (PL 312 de 2024 Cámara / 410 de 2025 Senado) avanza en Cámara pero se estanca en la Comisión Séptima del Senado.</div></div>
+    <div class="ev"><div class="yr">Oct 2025</div><div class="ti">Aplazamiento por falta de aval fiscal</div><div class="tx">La Comisión Séptima condiciona el debate a la definición de la Ley de Financiamiento.</div></div>
+    <div class="ev"><div class="yr">Dic 2025</div><div class="ti">Archivo en Comisión Séptima</div><div class="tx">Se aprueba la ponencia de archivo por <b>8 votos contra 5</b>. Se presenta apelación ante la Plenaria del Senado.</div></div>
+    <div class="ev"><div class="yr">Jul 2026</div><div class="ti">Nuevo proyecto radicado</div><div class="tx">El Gobierno y la bancada del Pacto Histórico radican un texto <b>nuevo de 90 artículos</b>, con firmas de 22 senadores y 38 representantes. <span class="tag w">En trámite</span></div></div>
+  </div>
+
+  <h3>Qué propone el texto de 2026</h3>
+  <ul class="clean">
+    <li><b>Fondo Único Público</b> de salud y una <b>ADRES fortalecida</b> como pagador único.</li>
+    <li><b>Eliminación de la intermediación financiera</b> de las EPS, que pasarían a funciones de gestión y auditoría bajo nuevas reglas.</li>
+    <li><b>Prohibición de la integración vertical</b> entre aseguramiento y prestación.</li>
+    <li><b>Giro directo universal</b> de la ADRES a hospitales, clínicas y proveedores.</li>
+    <li><b>Nuevas reglas de facturación y pago</b>: factura dentro de los 8 días siguientes al servicio; giro inicial de al menos <b>85%</b> dentro de 30 días calendario.</li>
+    <li>Consolidación del modelo <b>CAPS + Equipos Básicos de Salud</b> ya adoptado por decreto.</li>
+  </ul>
+
+  <h3>El debate, en sus dos mejores versiones</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Argumento a favor</h3>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0">La intermediación financiera privada no ha producido los resultados prometidos: persisten barreras de acceso, tutelas masivas y quiebras de aseguradoras que dejan deudas al sistema. Concentrar el flujo en un pagador público elimina un margen intermedio, reduce el costo de transacción, permite trazar cada peso y garantiza el pago oportuno al prestador, que es quien realmente atiende. El giro directo ya demostró que es operativamente viable.</p>
+    </div>
+    <div class="card">
+      <h3>Argumento en contra</h3>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0">El aseguramiento produjo una cobertura cercana al universal y una protección financiera alta en comparación regional. Eliminar al gestor de riesgo traslada al Estado una función que la ADRES no tiene capacidad instalada para ejercer, y sin aval fiscal el costo (≈6,3% del PIB en 2026, unos $11 billones adicionales) es insostenible. El desempeño de las EPS intervenidas sugiere que la administración estatal no mejora automáticamente el resultado.</p>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--ink3)">Ambas posiciones se apoyan en evidencia parcial y en supuestos distintos sobre la capacidad institucional del Estado. El punto empíricamente menos disputado es que la <b>suficiencia de la UPC</b> y el <b>flujo de caja hacia los prestadores</b> son los dos problemas reales, con independencia de qué arquitectura se elija.</p>
+</section>
+
+<!-- ============ CIFRAS ============ -->
+<section id="cifras">
+  <div class="eyebrow">Referencia rápida</div>
+  <h2>Cifras clave 2026</h2>
+  <p class="lede">Los números que se usan a diario. Verifica siempre contra la resolución vigente antes de usarlos en un documento formal.</p>
+
+  <div class="grid g4">
+    <div class="stat"><span class="n">$1.750.905</span><span class="l">SMLMV 2026 (Decreto 1469 de 2025)</span></div>
+    <div class="stat"><span class="n">$249.095</span><span class="l">Auxilio de transporte 2026</span></div>
+    <div class="stat"><span class="n">$12.110</span><span class="l">UVB 2026 (base de copagos y cuotas)</span></div>
+    <div class="stat"><span class="n">12,5%</span><span class="l">Cotización en salud sobre el IBC</span></div>
+  </div>
+
+  <h3>UPC 2026 <span class="tag">Res. 2764 de 2025</span></h3>
+  <div class="tbl"><table>
+    <tr><th>Régimen</th><th>Valor anual</th><th>Valor día</th><th>Variación</th></tr>
+    <tr><td>Contributivo</td><td class="num">$1.658.912,01</td><td class="num">$4.608,09</td><td class="num">+9,03%</td></tr>
+    <tr><td>Subsidiado</td><td class="num">$1.541.706,27</td><td class="num">$4.282,42</td><td class="num">+16,49%</td></tr>
+  </table></div>
+
+  <h3>Cuotas moderadoras y copagos 2026 <span class="tag">Circular Externa 048 de 2025</span></h3>
+  <div class="tbl"><table>
+    <tr><th>Rango de ingreso</th><th>Cuota moderadora</th><th>Copago (% del servicio)</th><th>Tope por evento</th><th>Tope anual</th></tr>
+    <tr><td>Menos de 2 SMLMV</td><td class="num">≈ $5.000</td><td class="num">11,5%</td><td class="num">$373.715</td><td class="num">$748.882</td></tr>
+    <tr><td>Entre 2 y 5 SMLMV</td><td class="num">≈ $20.100</td><td class="num">17,3%</td><td class="num">$1.497.644</td><td class="num">$2.995.409</td></tr>
+    <tr><td>Más de 5 SMLMV</td><td class="num">≈ $52.800</td><td class="num">23,0%</td><td class="num">$2.995.409</td><td class="num">$5.990.696</td></tr>
+  </table></div>
+
+  <h3>Otros valores de referencia</h3>
+  <ul class="clean">
+    <li><b>IBC mínimo</b>: 1 SMLMV · <b>IBC máximo</b>: 25 SMLMV.</li>
+    <li><b>Independientes</b>: IBC = 40% de los ingresos mensuales.</li>
+    <li><b>Pensionados</b>: cotizan el 12% de la mesada.</li>
+    <li><b>Cotización a riesgos laborales</b>: 0,348% a 8,7% del IBC, 100% a cargo del empleador.</li>
+    <li><b>Integración vertical</b>: máximo 30% del gasto en salud del régimen subsidiado con red propia.</li>
+    <li><b>Incapacidad general</b>: 66,67% del IBC (días 3 a 90); 50% del día 91 al 180.</li>
+  </ul>
+</section>
+
+<!-- ============ GLOSARIO ============ -->
+<section id="glosario">
+  <div class="eyebrow">Referencia rápida</div>
+  <h2>Glosario y siglario</h2>
+  <p class="lede">Filtra por categoría o usa el buscador de arriba. Cada entrada está redactada para que se entienda sin leer el resto del manual.</p>
+  <div class="glossctl" id="gchips"></div>
+  <div id="glist"></div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <div class="eyebrow">Autoevaluación</div>
+  <h2>Ponte a prueba</h2>
+  <p class="lede">25 preguntas sobre lo esencial. Cada respuesta trae la explicación, que es donde realmente se aprende.</p>
+  <div class="qz">
+    <div class="qmeta"><span id="qpos"></span><span id="qscore"></span></div>
+    <div class="bar"><i id="qbar" style="width:0"></i></div>
+    <div id="qbody"></div>
+    <div id="qexp" style="display:none" class="note"><span class="lab">Explicación</span><p id="qexptx"></p></div>
+    <div style="margin-top:16px;display:flex;gap:9px">
+      <button class="tbtn" id="qnext" style="display:none">Siguiente →</button>
+      <button class="tbtn" id="qreset">Reiniciar</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="max-width:74ch"><b>Sobre las fuentes.</b> Contenido construido sobre la Ley 100 de 1993 y su desarrollo, la Ley Estatutaria 1751 de 2015, el Decreto 780 de 2016, la Resolución 3100 de 2019 y normas concordantes. Las cifras de 2026 (UPC, SMLMV, UVB, copagos) y el estado del trámite de la reforma fueron verificados en julio de 2026 contra fuentes oficiales y de prensa especializada. Este material es una herramienta de estudio y consulta rápida: <b>antes de usar una cifra o una norma en un documento con efectos jurídicos, confírmala en la fuente oficial</b>, ya que la reglamentación del sector cambia con frecuencia.</p>
+  <p>Última actualización de contenido: julio de 2026 · Archivo autónomo, funciona sin conexión.</p>
+</footer>
+
+</main>
+</div>
+
+<button id="dockbtn">Siglario</button>
+<div id="dock">
+  <div class="hd">
+    <b>Siglario rápido</b>
+    <small>Consulta sin salir de donde vas leyendo</small>
+    <input id="dockq" type="text" placeholder="Filtrar… (UPC, habilitación, ADRES)" autocomplete="off">
+  </div>
+  <div id="dockl"></div>
+</div>
+
+<script>
+/* ---------------- GLOSARIO ---------------- */
+const GLOSS=[
+["SGSSS","Institucional","Sistema General de Seguridad Social en Salud. El sistema de salud colombiano completo, creado por el Libro II de la Ley 100 de 1993. Es el objeto de este manual."],
+["SSSI","Institucional","Sistema de Seguridad Social Integral. El conjunto mayor creado por la Ley 100: salud (SGSSS), pensiones y riesgos laborales (SGRL)."],
+["SMLMV","Financiación","Salario Mínimo Legal Mensual Vigente. Unidad de referencia de casi todo el sistema (topes de IBC, rangos de copagos). En 2026: $1.750.905."],
+["PIB","Financiación","Producto Interno Bruto. Se usa como referencia del tamaño del gasto en salud: en 2026 el sector representa cerca del 6,3% del PIB colombiano."],
+["IVC","Institucional","Inspección, Vigilancia y Control. La función que ejerce principalmente la Supersalud sobre todos los actores del sistema."],
+["SIAU","Prestación","Servicio de Información y Atención al Usuario. Oficina que toda IPS y EPS debe tener para recibir solicitudes, quejas y reclamos."],
+["PQRD","Institucional","Peticiones, Quejas, Reclamos y Denuncias. Canal formal de reclamación ante la EPS y, en segunda instancia, ante la Supersalud."],
+["COPACOS","Institucional","Comités de Participación Comunitaria en Salud. Instancia de participación social en el nivel municipal."],
+["Tutela","Beneficios","Acción constitucional de protección inmediata de derechos fundamentales. Es, de hecho, el mecanismo más usado para acceder a servicios de salud negados. Su incumplimiento se persigue por <b>desacato</b>."],
+["FOMAG","Aseguramiento","Fondo Nacional de Prestaciones Sociales del Magisterio. Administra la salud de los docentes oficiales; es un régimen exceptuado, fuera del SGSSS."],
+["ICONTEC","Calidad","Instituto Colombiano de Normas Técnicas. Es el ente acreditador en salud designado en Colombia; otorga la acreditación, que es voluntaria."],
+["ICBF","Institucional","Instituto Colombiano de Bienestar Familiar. Relevante en salud porque la población infantil a su cargo se afilia al régimen subsidiado por listado censal."],
+["INPEC","Institucional","Instituto Nacional Penitenciario y Carcelario. Las personas privadas de la libertad a su cargo son población especial del régimen subsidiado."],
+["SAT","Aseguramiento","Sistema de Afiliación Transaccional. Plataforma que permite afiliar en línea, incluso de oficio desde una IPS, para que nadie quede sin atención por falta de aseguramiento."],
+["PND","Normas","Plan Nacional de Desarrollo. Ley cuatrienal que fija las metas del Gobierno. Varias reformas de salud han entrado por esta vía: la ADRES nació en el PND de 2015 (Ley 1753) y el modelo preventivo en el de 2023 (Ley 2294)."],
+["UCI","Prestación","Unidad de Cuidados Intensivos. Servicio de alta complejidad; su habilitación exige por interdependencia laboratorio e imagenología disponibles 24/7."],
+["ERC","Salud pública","Enfermedad Renal Crónica. Una de las patologías gestionadas por la Cuenta de Alto Costo junto con VIH, cáncer, hemofilia y artritis reumatoide."],
+["DESC","Normas","Comité de Derechos Económicos, Sociales y Culturales de la ONU. Su Observación General 14 es la fuente de los cuatro elementos esenciales del derecho a la salud (disponibilidad, aceptabilidad, accesibilidad y calidad) que recoge la Ley 1751."],
+["Integración vertical","Aseguramiento","Que una EPS contrate servicios con IPS de su propiedad. La Ley 1122 de 2007 la limitó al 30% del gasto en salud del régimen subsidiado por el conflicto de interés que genera."],
+["Gestión del riesgo","Aseguramiento","Función central de la EPS: anticipar, prevenir y administrar la probabilidad de enfermar de su población (riesgo en salud) y el costo que ello implica (riesgo financiero)."],
+["Subsidio a la demanda","Financiación","Modelo introducido por la Ley 100: el dinero público sigue a la persona a través de una prima, en lugar de financiar directamente al hospital (<b>subsidio a la oferta</b>, el modelo anterior a 1993)."],
+["Alto costo","Salud pública","Patologías de baja frecuencia y alto impacto económico, con protección especial: no generan copagos ni cuotas moderadoras y su riesgo se ajusta entre EPS vía la Cuenta de Alto Costo."],
+["Ley 715 de 2001","Normas","Organiza el Sistema General de Participaciones y define las competencias de la Nación, los departamentos y los municipios en salud y educación."],
+["Ley 1562 de 2012","Normas","Reforma el Sistema General de Riesgos Laborales; actualiza las definiciones de accidente de trabajo y enfermedad laboral."],
+["Ley 1753 de 2015","Normas","Plan Nacional de Desarrollo 2014–2018. Su artículo 66 creó la ADRES."],
+["Ley 1819 de 2016","Normas","Reforma tributaria que exoneró a los empleadores del aporte del 8,5% en salud por los trabajadores que devengan menos de 10 SMLMV."],
+["Ley 2294 de 2023","Normas","Plan Nacional de Desarrollo 2022–2026. Instala el modelo preventivo y predictivo basado en atención primaria que luego desarrolla el Decreto 858 de 2025."],
+["Decreto 1072 de 2015","Normas","Decreto Único Reglamentario del Sector Trabajo. Contiene las obligaciones del SG-SST a cargo del empleador."],
+["Resolución 5095 de 2018","Normas","Adopta el manual de acreditación en salud ambulatorio y hospitalario, componente voluntario del SOGCS."],
+["Resolución 2764 de 2025","Normas","Fija los valores de la UPC para 2026: $1.658.912,01 en el contributivo y $1.541.706,27 en el subsidiado."],
+["ADRES","Financiación","Administradora de los Recursos del SGSSS. Entidad que recauda, administra y paga los recursos del sistema. Creada por la Ley 1753 de 2015, opera desde agosto de 2017 y reemplazó al FOSYGA."],
+["FOSYGA","Financiación","Fondo de Solidaridad y Garantía. Antecesor de la ADRES; era una cuenta sin personería jurídica con cuatro subcuentas: compensación, solidaridad, promoción y prevención, y ECAT. <b>Ya no existe.</b>"],
+["UPC","Financiación","Unidad de Pago por Capitación. Prima anual que la ADRES reconoce a una EPS por cada afiliado para garantizarle el plan de beneficios. Se ajusta por edad, sexo y zona geográfica."],
+["UPC-C / UPC-S","Financiación","UPC del régimen contributivo y del subsidiado. En 2026: $1.658.912,01 y $1.541.706,27 anuales respectivamente."],
+["Prima pura","Financiación","Componente de la UPC que corresponde estrictamente al costo esperado de los servicios, sin gastos de administración. La Corte ordenó llevar la prima pura subsidiada al 95% de la contributiva."],
+["Compensación","Financiación","Proceso por el cual la EPS descuenta de lo recaudado el valor de las UPC que le corresponden y gira el excedente a la ADRES (o recibe el faltante). Es la materialización de la solidaridad."],
+["LMA","Financiación","Liquidación Mensual de Afiliados. Cálculo mensual con el que la ADRES determina cuántas UPC reconoce a cada EPS."],
+["Giro directo","Financiación","Mecanismo por el cual la ADRES paga directamente a las IPS y proveedores, sin que los recursos pasen por la tesorería de la EPS. En 2026 se extendió a los presupuestos máximos (Res. 0107427 de 2026)."],
+["Presupuesto máximo","Financiación","Monto prospectivo mensual que la ADRES gira a cada EPS para financiar servicios y tecnologías <b>no</b> financiados con UPC. Desde 2020 reemplazó al mecanismo de recobro."],
+["Recobro","Financiación","Antiguo mecanismo de reembolso caso a caso ante el FOSYGA/ADRES por servicios No POS. Hoy residual, principalmente para fallos de tutela sobre servicios excluidos."],
+["SGP","Financiación","Sistema General de Participaciones (Ley 715 de 2001). Transferencias de la Nación a departamentos y municipios; su componente de salud es la principal fuente del régimen subsidiado."],
+["Rentas cedidas","Financiación","Impuestos al licor, la cerveza, el cigarrillo y los juegos de suerte y azar, cuya destinación fue cedida a los departamentos para financiar salud."],
+["ECAT","Financiación","Cuenta de Eventos Catastróficos y Accidentes de Tránsito. Paga la atención de víctimas cuando no hay SOAT o este se agotó."],
+["SOAT","Financiación","Seguro Obligatorio de Accidentes de Tránsito. Cubre la atención en salud de las víctimas hasta un tope; superado el tope o ausente el seguro, entra la cuenta ECAT."],
+["IBC","Financiación","Ingreso Base de Cotización. Base sobre la que se calcula el aporte: mínimo 1 SMLMV, máximo 25 SMLMV. Para independientes es el 40% de los ingresos."],
+["PILA","Financiación","Planilla Integrada de Liquidación de Aportes. Instrumento único para pagar los aportes a seguridad social y parafiscales."],
+["UGPP","Financiación","Unidad de Gestión Pensional y Parafiscales. Persigue la evasión y elusión de aportes al sistema."],
+["UVB","Financiación","Unidad de Valor Básico. Referente de indexación con el que se actualizan copagos y cuotas moderadoras. En 2026: $12.110."],
+["EPS","Aseguramiento","Entidad Promotora de Salud. Afilia, recauda, gestiona el riesgo en salud y financiero, organiza la red y garantiza el PBS a cambio de la UPC."],
+["EOC","Aseguramiento","Entidad Obligada a Compensar. Entidades distintas de las EPS que cumplen función aseguradora y participan en el proceso de compensación (ej. cajas de compensación)."],
+["Régimen contributivo","Aseguramiento","Al que pertenecen quienes tienen capacidad de pago y cotizan el 12,5% del IBC. Genera prestaciones económicas."],
+["Régimen subsidiado","Aseguramiento","Al que pertenece la población sin capacidad de pago, identificada por SISBÉN IV (grupos A y B) o por listado censal. Financiado con recursos fiscales."],
+["Regímenes exceptuados","Aseguramiento","Fuerzas Militares y Policía, Magisterio (FOMAG), Ecopetrol y universidades públicas. Están <b>fuera</b> del SGSSS y no reciben UPC."],
+["SISBÉN IV","Aseguramiento","Sistema de Identificación de Potenciales Beneficiarios. Clasifica por capacidad de generar ingresos en grupos A (pobreza extrema), B (pobreza moderada), C (vulnerable) y D (no pobre)."],
+["Movilidad","Aseguramiento","Cambio de régimen (subsidiado ↔ contributivo) sin cambiar de EPS, cuando cambia la capacidad de pago del afiliado."],
+["Portabilidad","Aseguramiento","Derecho a recibir atención en cualquier municipio del país conservando la afiliación, cuando se está fuera del domicilio de afiliación."],
+["Multiafiliación","Aseguramiento","Estar afiliado simultáneamente a más de una EPS o régimen. Es una irregularidad que resuelve la Supersalud en función jurisdiccional."],
+["Período de protección laboral","Aseguramiento","Cobertura que conserva el afiliado y su núcleo tras terminar la relación laboral, por un plazo proporcional a las semanas cotizadas."],
+["UPC adicional","Aseguramiento","Aporte extra que paga el cotizante para afiliar a personas que no cumplen los requisitos de beneficiario (afiliados adicionales)."],
+["Cuenta de Alto Costo","Aseguramiento","Organismo técnico no gubernamental que gestiona información y ajusta el riesgo entre EPS para patologías de alto costo (ERC, VIH, cáncer, hemofilia, artritis)."],
+["IPS","Prestación","Institución Prestadora de Servicios de Salud. Quien efectivamente atiende: hospitales, clínicas, laboratorios, consultorios."],
+["ESE","Prestación","Empresa Social del Estado. IPS pública, constituida como categoría especial de entidad descentralizada, con régimen jurídico propio."],
+["RIPSS","Prestación","Redes Integrales de Prestadores de Servicios de Salud. Conjunto articulado de prestadores que la EPS conforma y que debe ser habilitado como red."],
+["Referencia","Prestación","Envío de un paciente desde un prestador de menor capacidad resolutiva a uno de mayor complejidad."],
+["Contrarreferencia","Prestación","Retorno del paciente al prestador de origen con la respuesta, los resultados y el plan de manejo."],
+["Capitación","Prestación","Modalidad de pago: valor fijo por persona y por mes para un conjunto de servicios, independiente del uso. El riesgo lo asume la IPS."],
+["PGP","Prestación","Pago Global Prospectivo. Suma fija anticipada para atender una población definida, con metas de resultado. Riesgo compartido."],
+["Glosa","Prestación","Objeción total o parcial que hace la EPS a una factura de la IPS, por causales tipificadas (tarifas, soportes, autorización, cobertura, pertinencia)."],
+["RIPS","Prestación","Registro Individual de Prestación de Servicios de Salud. Dato transaccional de cada atención; insumo esencial del cálculo de la UPC."],
+["Atención inicial de urgencias","Prestación","Obligación de toda IPS de atender una urgencia sin exigir requisito previo alguno y con independencia de la capacidad de pago o del asegurador (art. 14, Ley 1751)."],
+["PBS","Beneficios","Plan de Beneficios en Salud. Sucesor del POS desde 2017. Conjunto de servicios y tecnologías financiados con la UPC."],
+["POS","Beneficios","Plan Obligatorio de Salud. Denominación histórica del PBS. <b>En desuso desde 2017.</b>"],
+["No financiado con UPC","Beneficios","Servicios cubiertos por el derecho pero pagados con presupuestos máximos, no con la prima. Requieren prescripción en MIPRES."],
+["Exclusiones","Beneficios","Listado taxativo de lo que no se financia con recursos públicos, definido por el procedimiento técnico-científico y participativo del art. 15 de la Ley 1751."],
+["MIPRES","Beneficios","Mi Prescripción. Plataforma en la que el profesional prescribe directamente lo no financiado con UPC. Eliminó los Comités Técnico-Científicos."],
+["CTC","Beneficios","Comité Técnico-Científico. Instancia que autorizaba servicios No POS. <b>Suprimido</b> con la entrada de MIPRES."],
+["Cuota moderadora","Beneficios","Pago fijo a cargo del <b>cotizante</b> del contributivo, destinado a regular el uso de servicios ambulatorios de baja intensidad."],
+["Copago","Beneficios","Porcentaje del valor del servicio a cargo del <b>beneficiario</b> del contributivo y del grupo B del subsidiado, con topes por evento y por año. Ayuda a financiar el sistema."],
+["Períodos mínimos de cotización","Beneficios","Semanas de carencia exigibles para ciertas tecnologías de alto costo. No aplican a urgencias, embarazo, parto ni menores de un año."],
+["SOGCS","Calidad","Sistema Obligatorio de Garantía de Calidad en Salud. Cuatro componentes: habilitación, PAMEC, acreditación y sistema de información para la calidad."],
+["Habilitación","Calidad","Cumplimiento y declaración de las condiciones mínimas para prestar un servicio. Es obligatoria y declarativa: se autoevalúa, se inscribe en el REPS y se verifica después."],
+["REPS","Calidad","Registro Especial de Prestadores de Servicios de Salud. Base de datos pública donde se inscriben prestadores y se declaran los servicios habilitados. El trámite es gratuito."],
+["PAMEC","Calidad","Programa de Auditoría para el Mejoramiento de la Calidad de la Atención en Salud. Obligatorio; ciclo de autocontrol, auditoría interna y auditoría externa."],
+["Acreditación","Calidad","Componente <b>voluntario</b> del SOGCS. Reconoce estándares superiores de excelencia; en Colombia la otorga el ICONTEC como ente acreditador."],
+["Interdependencia","Calidad","Estándar de habilitación que exige la existencia (propia o contratada) de los servicios de apoyo indispensables para que el servicio principal sea seguro."],
+["Procesos prioritarios","Calidad","Estándar de habilitación referido a los protocolos y guías documentados de los procesos asistenciales críticos, incluida la seguridad del paciente."],
+["ReTHUS","Calidad","Registro Único Nacional del Talento Humano en Salud. Acredita que un profesional está autorizado para ejercer."],
+["Evento adverso","Calidad","Daño no intencional derivado de la atención en salud, y no de la enfermedad de base. Puede ser prevenible o no prevenible."],
+["Evento centinela","Calidad","Evento adverso de tal gravedad que exige investigación inmediata y respuesta institucional."],
+["Farmacovigilancia","Calidad","Detección, evaluación y prevención de reacciones adversas a medicamentos. Su equivalente para dispositivos es la <b>tecnovigilancia</b>."],
+["MinSalud","Institucional","Ministerio de Salud y Protección Social. Rector del sistema: formula política, define el PBS y fija la UPC por resolución."],
+["Supersalud","Institucional","Superintendencia Nacional de Salud. Inspecciona, vigila, controla y sanciona; puede intervenir entidades y ejerce funciones jurisdiccionales y de conciliación."],
+["INVIMA","Institucional","Instituto Nacional de Vigilancia de Medicamentos y Alimentos. Otorga registros sanitarios y vigila medicamentos, dispositivos y alimentos."],
+["INS","Institucional","Instituto Nacional de Salud. Vigilancia epidemiológica (SIVIGILA), laboratorio nacional de referencia y red de bancos de sangre."],
+["IETS","Institucional","Instituto de Evaluación Tecnológica en Salud. Produce las evaluaciones que sustentan inclusiones, exclusiones y decisiones de precios."],
+["CRES","Institucional","Comisión de Regulación en Salud. Creada por la Ley 1122 de 2007 para fijar la UPC y el POS; <b>liquidada en 2012</b>, sus funciones volvieron al MinSalud."],
+["CNSSS","Institucional","Consejo Nacional de Seguridad Social en Salud. Órgano regulador original de la Ley 100, reemplazado por la CRES."],
+["Función jurisdiccional","Institucional","Facultad de la Supersalud de actuar como juez en conflictos de cobertura, prestaciones económicas, multiafiliación y libre elección. Gratuita y sin abogado."],
+["Intervención forzosa","Institucional","Medida especial de la Supersalud por la que asume la administración de una entidad (para administrar o para liquidar) ante riesgos graves."],
+["PDSP","Salud pública","Plan Decenal de Salud Pública. Marco estratégico nacional a diez años; el vigente cubre 2022–2031."],
+["PIC","Salud pública","Plan de Intervenciones Colectivas. Intervenciones poblacionales, no individuales, a cargo y con financiación de la entidad territorial."],
+["PTS","Salud pública","Plan Territorial de Salud. Instrumento de planeación de cada departamento y municipio, articulado al PDSP."],
+["ASIS","Salud pública","Análisis de Situación de Salud. Diagnóstico territorial que sustenta la planeación en salud pública."],
+["SIVIGILA","Salud pública","Sistema de Vigilancia en Salud Pública, operado por el INS. Notificación obligatoria de eventos de interés en salud pública."],
+["SISPRO","Salud pública","Sistema Integral de Información de la Protección Social. Bodega de datos del sector salud."],
+["RIAS","Salud pública","Rutas Integrales de Atención en Salud. La Res. 3280 de 2018 adoptó la ruta de promoción y mantenimiento y la ruta materno-perinatal."],
+["APS","Salud pública","Atención Primaria en Salud. Estrategia de organización del sistema centrada en el primer nivel, la prevención y el territorio."],
+["CAPS","Salud pública","Centro de Atención Primaria en Salud. Puerta de entrada del modelo adoptado por el Decreto 858 de 2025, con población adscrita territorialmente."],
+["EBS","Salud pública","Equipos Básicos de Salud. Dispositivo extramural que caracteriza familias y territorios. Más de 14.400 equipos operando en 2026."],
+["MIAS / PAIS","Salud pública","Modelo Integral de Atención en Salud y su política (Res. 429 de 2016). Introdujo las RIAS; superado por MAITE."],
+["MAITE","Salud pública","Modelo de Acción Integral Territorial (Res. 2626 de 2019). Sucesor de MIAS; superado por el modelo del Decreto 858 de 2025."],
+["SGRL","Riesgos laborales","Sistema General de Riesgos Laborales (Libro III de la Ley 100, reformado por la Ley 1562 de 2012). Cubre accidente de trabajo y enfermedad laboral."],
+["ARL","Riesgos laborales","Administradora de Riesgos Laborales. Asegura el riesgo laboral; su cotización la paga 100% el empleador."],
+["SG-SST","Riesgos laborales","Sistema de Gestión de la Seguridad y Salud en el Trabajo (Decreto 1072 de 2015). Obligación preventiva a cargo del empleador."],
+["Junta de Calificación","Riesgos laborales","Instancias regional y nacional que califican origen, pérdida de capacidad laboral y fecha de estructuración."],
+["Ley 100 de 1993","Normas","Crea el Sistema de Seguridad Social Integral. Su Libro II crea el SGSSS con EPS, IPS, dos regímenes y la UPC."],
+["Ley 1122 de 2007","Normas","Primer ajuste estructural: crea la CRES, fortalece la Supersalud con funciones jurisdiccionales, sube la cotización a 12,5% y limita la integración vertical."],
+["Ley 1438 de 2011","Normas","Reescribe los principios del art. 153, introduce la APS y las redes integradas, la portabilidad y el Plan Decenal de Salud Pública."],
+["Ley 1751 de 2015","Normas","Ley Estatutaria de Salud. Consagra la salud como derecho fundamental autónomo, la autonomía profesional y el modelo de exclusiones explícitas."],
+["Ley 1949 de 2019","Normas","Fortalece el régimen sancionatorio de la Supersalud y eleva los topes de las multas."],
+["Decreto 780 de 2016","Normas","Decreto Único Reglamentario del Sector Salud. Compila la reglamentación dispersa, incluido el antiguo Decreto 1011 de 2006 del SOGCS."],
+["Resolución 3100 de 2019","Normas","Define condiciones y procedimiento de inscripción en el REPS y habilitación de servicios. Reemplazó la Res. 2003 de 2014; actualizada por la Res. 465 de 2025."],
+["Resolución 3280 de 2018","Normas","Adopta los lineamientos técnicos de la ruta de promoción y mantenimiento de la salud y la ruta materno-perinatal."],
+["Decreto 858 de 2025","Normas","Adopta el Modelo de Salud Preventivo, Predictivo y Resolutivo: CAPS con adscripción territorial y Equipos Básicos de Salud."],
+["Sentencia T-760 de 2008","Normas","Hito de la Corte Constitucional: salud como derecho fundamental, unificación de planes, actualización periódica y corrección de recobros. Sigue produciendo autos de seguimiento en 2026."]
+];
+const CATS=["Todas","Financiación","Aseguramiento","Prestación","Beneficios","Calidad","Institucional","Salud pública","Riesgos laborales","Normas"];
+let gcat="Todas";
+function renderGloss(){
+  document.getElementById("gchips").innerHTML=CATS.map(c=>
+    `<button class="chip${c===gcat?' on':''}" data-c="${c}">${c}</button>`).join("");
+  const items=GLOSS.filter(g=>gcat==="Todas"||g[1]===gcat)
+    .sort((a,b)=>a[0].localeCompare(b[0],'es'));
+  document.getElementById("glist").innerHTML=items.map(g=>
+    `<div class="term"><div class="t">${g[0]}</div><div class="d">${g[2]}</div><div class="m">${g[1]}</div></div>`).join("");
+  document.querySelectorAll("#gchips .chip").forEach(b=>b.onclick=()=>{gcat=b.dataset.c;renderGloss();});
+}
+renderGloss();
+
+/* ---------------- SIGLAS INLINE ---------------- */
+const GMAP={};GLOSS.forEach(g=>GMAP[g[0]]=g);
+/* tokens que se anotan en el cuerpo: siglas puras + alias manuales hacia una entrada del glosario */
+const ALIAS=[
+  ["SISBÉN IV","SISBÉN IV"],["SISBÉN","SISBÉN IV"],["SG-SST","SG-SST"],["ReTHUS","ReTHUS"],
+  ["UPC-C","UPC-C / UPC-S"],["UPC-S","UPC-C / UPC-S"],["MIAS","MIAS / PAIS"],["PAIS","MIAS / PAIS"],
+  ["Ley 100","Ley 100 de 1993"],["Ley 1122","Ley 1122 de 2007"],["Ley 1438","Ley 1438 de 2011"],
+  ["Ley 1751","Ley 1751 de 2015"],["Ley 1949","Ley 1949 de 2019"],["Ley 715","Ley 715 de 2001"],
+  ["Ley 1562","Ley 1562 de 2012"],["Ley 1753","Ley 1753 de 2015"],["Ley 1819","Ley 1819 de 2016"],
+  ["Ley 2294","Ley 2294 de 2023"],["Ley Estatutaria","Ley 1751 de 2015"],
+  ["Decreto 780","Decreto 780 de 2016"],["Decreto 858","Decreto 858 de 2025"],
+  ["Decreto 1072","Decreto 1072 de 2015"],
+  ["Resolución 3100","Resolución 3100 de 2019"],["Res. 3100","Resolución 3100 de 2019"],
+  ["Resolución 3280","Resolución 3280 de 2018"],["Res. 3280","Resolución 3280 de 2018"],
+  ["Resolución 5095","Resolución 5095 de 2018"],["Resolución 2764","Resolución 2764 de 2025"],
+  ["T-760","Sentencia T-760 de 2008"],["tutela","Tutela"],["tutelas","Tutela"],
+  ["integración vertical","Integración vertical"],["alto costo","Alto costo"],
+  ["subsidio a la demanda","Subsidio a la demanda"],["gestión del riesgo","Gestión del riesgo"]
+];
+function annotateSiglas(){
+  const pairs=[];
+  GLOSS.forEach(g=>{ if(/^[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ0-9\-]{1,9}$/.test(g[0])) pairs.push([g[0],g[0]]); });
+  ALIAS.forEach(a=>{ if(GMAP[a[1]]) pairs.push(a); });
+  pairs.sort((a,b)=>b[0].length-a[0].length);
+  const lookup={}; pairs.forEach(p=>{ if(!(p[0] in lookup)) lookup[p[0]]=p[1]; });
+  const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  const body='('+pairs.map(p=>esc(p[0])).join('|')+')';
+  let rx;
+  try{ rx=new RegExp('(?<![\\p{L}\\p{N}])'+body+'(?![\\p{L}\\p{N}])','gu'); }
+  catch(e){ rx=new RegExp('\\b'+body+'\\b','g'); }
+  const SKIP=new Set(['SCRIPT','STYLE','ABBR','A','BUTTON','INPUT','H1','H2','MARK']);
+  document.querySelectorAll('main section').forEach(sec=>{
+    if(sec.id==='glosario')return;
+    const seen={};
+    const w=document.createTreeWalker(sec,NodeFilter.SHOW_TEXT,{acceptNode(n){
+      let p=n.parentElement;
+      while(p&&p!==sec){
+        if(SKIP.has(p.tagName)||p.classList.contains('tag')||p.classList.contains('eyebrow')||p.classList.contains('lab'))
+          return NodeFilter.FILTER_REJECT;
+        p=p.parentElement;
+      }
+      return n.nodeValue.length>1?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    const nodes=[]; let n; while(n=w.nextNode()) nodes.push(n);
+    nodes.forEach(node=>{
+      const txt=node.nodeValue; rx.lastIndex=0;
+      if(!rx.test(txt))return; rx.lastIndex=0;
+      const frag=document.createDocumentFragment(); let last=0,m,hit=false;
+      while((m=rx.exec(txt))!==null){
+        const tok=m[1], key=lookup[tok];
+        if(!key||!GMAP[key])continue;
+        seen[key]=(seen[key]||0)+1;
+        if(seen[key]>3)continue;              /* máximo 3 marcas por término y por módulo */
+        frag.appendChild(document.createTextNode(txt.slice(last,m.index)));
+        const a=document.createElement('abbr');
+        a.className='sg'; a.dataset.k=key; a.textContent=tok;
+        frag.appendChild(a); last=m.index+tok.length; hit=true;
+      }
+      if(!hit)return;
+      frag.appendChild(document.createTextNode(txt.slice(last)));
+      node.parentNode.replaceChild(frag,node);
+    });
+  });
+}
+annotateSiglas();
+
+/* ---------------- POPOVER DE SIGLA ---------------- */
+const pop=document.createElement('div'); pop.id='pop'; document.body.appendChild(pop);
+let popT=null, popPinned=false;
+function showPop(el,pin){
+  const g=GMAP[el.dataset.k]; if(!g)return;
+  popPinned=!!pin;
+  pop.innerHTML='<b class="k">'+g[0]+'</b>'+g[2]+'<i>'+g[1]+'</i>';
+  pop.classList.add('show');
+  const r=el.getBoundingClientRect(), pr=pop.getBoundingClientRect();
+  let x=r.left, y=r.bottom+8;
+  if(x+pr.width>innerWidth-12) x=innerWidth-pr.width-12;
+  if(x<12) x=12;
+  if(y+pr.height>innerHeight-12) y=r.top-pr.height-8;
+  pop.style.left=x+'px'; pop.style.top=Math.max(12,y)+'px';
+}
+function hidePop(){ pop.classList.remove('show'); popPinned=false; }
+const near=(e,sel)=>e.target instanceof Element ? e.target.closest(sel) : null;
+document.addEventListener('mouseover',e=>{
+  const a=near(e,'abbr.sg'); if(a&&!popPinned){ clearTimeout(popT); showPop(a,false); }
+});
+document.addEventListener('mouseout',e=>{
+  if(near(e,'abbr.sg')&&!popPinned) popT=setTimeout(hidePop,200);
+});
+pop.addEventListener('mouseenter',()=>clearTimeout(popT));
+pop.addEventListener('mouseleave',()=>{ if(!popPinned) hidePop(); });
+document.addEventListener('click',e=>{
+  const a=near(e,'abbr.sg');
+  if(a){ e.preventDefault(); showPop(a,true); return; }
+  if(!near(e,'#pop')) hidePop();
+});
+addEventListener('scroll',()=>{ if(!popPinned) hidePop(); },{passive:true});
+
+/* ---------------- SIGLARIO FLOTANTE ---------------- */
+function renderDock(f){
+  const n=(f||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const plain=s=>s.replace(/<[^>]+>/g,'');
+  const items=GLOSS.filter(g=>{
+    if(!n)return true;
+    const hay=(g[0]+' '+plain(g[2])).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    return hay.includes(n);
+  }).sort((a,b)=>a[0].localeCompare(b[0],'es'));
+  document.getElementById('dockl').innerHTML = items.length
+    ? items.map(g=>{ const d=plain(g[2]);
+        return `<div class="it" title="${d.replace(/"/g,'&quot;')}"><b>${g[0]}</b> — ${d.length>105?d.slice(0,105)+'…':d}</div>`;
+      }).join('')
+    : '<div class="it" style="color:var(--ink3)">Sin coincidencias.</div>';
+}
+const dock=document.getElementById('dock');
+document.getElementById('dockbtn').onclick=()=>{
+  dock.classList.toggle('show');
+  if(dock.classList.contains('show')){ renderDock(''); document.getElementById('dockq').focus(); }
+};
+document.getElementById('dockq').addEventListener('input',e=>renderDock(e.target.value));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ dock.classList.remove('show'); hidePop(); } });
+
+/* ---------------- BUSCADOR ---------------- */
+const secTitle=id=>{const s=document.getElementById(id);const h=s&&s.querySelector("h1,h2");return h?h.textContent.trim():id;};
+function buildIndex(){
+  const idx=[];
+  document.querySelectorAll("main section").forEach(sec=>{
+    const title=secTitle(sec.id);
+    sec.querySelectorAll(".card,.term,.note,details,.tl .ev,.stat,ul.clean li,ol.steps li,p.lede,.tbl tr").forEach(el=>{
+      const t=el.innerText.replace(/\s+/g," ").trim();
+      if(t.length>25) idx.push({sec:sec.id,title,txt:t,el});
+    });
+  });
+  return idx;
+}
+let IDX=null;
+const res=document.getElementById("results"), rl=document.getElementById("reslist"), rc=document.getElementById("rescount");
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+document.getElementById("q").addEventListener("input",e=>{
+  const v=e.target.value.trim();
+  if(v.length<2){res.classList.remove("show");return;}
+  if(!IDX)IDX=buildIndex();
+  const n=norm(v);
+  const hits=IDX.filter(i=>norm(i.txt).includes(n)).slice(0,60);
+  rc.textContent=`${hits.length} resultado${hits.length===1?"":"s"} para "${v}"`;
+  rl.innerHTML=hits.map((h,k)=>{
+    let t=h.txt.length>320?h.txt.slice(0,320)+"…":h.txt;
+    const i=norm(t).indexOf(n);
+    if(i>-1)t=t.slice(0,i)+"<mark>"+t.slice(i,i+v.length)+"</mark>"+t.slice(i+v.length);
+    return `<div class="hit" data-k="${k}"><div class="where">${h.title}</div><div class="txt">${t}</div></div>`;
+  }).join("")||'<p style="color:var(--ink3)">Sin coincidencias. Prueba con una sigla (UPC, REPS, PAMEC) o con el nombre de una norma.</p>';
+  rl.querySelectorAll(".hit").forEach(el=>el.onclick=()=>{
+    const h=hits[+el.dataset.k];
+    res.classList.remove("show");document.getElementById("q").value="";
+    h.el.scrollIntoView({block:"center"});
+    const prev=h.el.style.transition;
+    h.el.style.transition="background .25s";h.el.style.background="var(--acc-bg)";
+    setTimeout(()=>{h.el.style.background="";h.el.style.transition=prev;},1400);
+  });
+  res.classList.add("show");
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="/"&&document.activeElement.id!=="q"){e.preventDefault();document.getElementById("q").focus();}
+  if(e.key==="Escape"){res.classList.remove("show");document.getElementById("q").blur();}
+});
+
+/* ---------------- NAV ACTIVA ---------------- */
+const links=[...document.querySelectorAll("nav.side a")];
+if(typeof IntersectionObserver!=="undefined"){
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(en=>{if(en.isIntersecting){
+      links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id));}});
+  },{rootMargin:"-15% 0px -75% 0px"});
+  document.querySelectorAll("main section").forEach(s=>obs.observe(s));
+}
+
+/* ---------------- TEMA ---------------- */
+document.getElementById("theme").onclick=()=>{
+  const d=document.documentElement;
+  d.dataset.theme = d.dataset.theme==="dark" ? "light" : "dark";
+};
+
+/* ---------------- QUIZ ---------------- */
+const Q=[
+["¿Qué es exactamente la UPC?",["Una tarifa que la EPS le paga a la IPS por cada atención","Una prima anual per cápita que la ADRES reconoce a la EPS por cada afiliado","El presupuesto anual asignado a cada hospital público","El tope máximo de gasto anual por paciente"],1,"La UPC es una <b>prima de aseguramiento</b>, no una tarifa ni un techo de gasto del paciente. Se calcula actuarialmente con frecuencias de uso y costo medio, y se ajusta por edad, sexo y zona geográfica."],
+["¿Cuál de estos NO es un componente del SOGCS?",["Sistema Único de Habilitación","PAMEC","Sistema Único de Acreditación","Sistema Único de Afiliación"],3,"El SOGCS tiene cuatro componentes: habilitación, PAMEC, acreditación y sistema de información para la calidad. La afiliación pertenece a la operación del aseguramiento, no a la calidad."],
+["La atención inicial de urgencias…",["Requiere autorización previa de la EPS","Solo es obligatoria en IPS públicas","Es obligatoria para toda IPS sin exigir requisito previo alguno","Puede negarse si el paciente no está afiliado"],2,"El art. 14 de la Ley Estatutaria 1751 de 2015 la hace obligatoria y sin ningún requisito previo, en toda IPS pública o privada, con independencia del asegurador o de la capacidad de pago."],
+["¿Quién paga la cuota moderadora?",["El beneficiario del régimen contributivo","El cotizante del régimen contributivo","Todos los afiliados del subsidiado","El empleador"],1,"Cuota moderadora = <b>cotizante</b>, valor fijo, servicios ambulatorios. Copago = <b>beneficiario</b> (y grupo B del subsidiado), porcentaje del valor del servicio."],
+["Los presupuestos máximos reemplazaron desde 2020 a…",["La UPC del régimen subsidiado","El mecanismo de recobros por servicios No POS","El Plan de Intervenciones Colectivas","El giro directo"],1,"Antes la EPS pagaba lo No POS y recobraba caso a caso ante el FOSYGA/ADRES. El presupuesto máximo es un techo prospectivo mensual que cambia el incentivo financiero."],
+["¿Cuál es el estándar de habilitación que más se olvida?",["Talento humano","Infraestructura","Interdependencia","Dotación"],2,"Interdependencia exige que existan los servicios de apoyo indispensables para que el servicio principal sea seguro (una UCI necesita laboratorio e imagenología 24/7). Genera muchos hallazgos en visitas reales."],
+["La Ley Estatutaria 1751 de 2015 cambió el plan de beneficios de…",["Lista negativa a lista positiva","Lista positiva a lista de exclusiones explícitas","Plan único a planes diferenciados por régimen","Plan obligatorio a plan voluntario"],1,"Pasó de \"solo está cubierto lo que aparece en la lista\" a \"todo está cubierto salvo lo expresamente excluido\" mediante el procedimiento técnico-científico y participativo del art. 15."],
+["¿Cuánto cotiza en salud un trabajador independiente?",["4% sobre sus ingresos totales","8,5% sobre el 40% de sus ingresos","12,5% sobre el 40% de sus ingresos","12,5% sobre sus ingresos totales"],2,"El independiente asume el 12,5% completo, calculado sobre un IBC equivalente al 40% de sus ingresos mensuales, con piso de 1 SMLMV y techo de 25 SMLMV."],
+["La ADRES fue creada por…",["La Ley 100 de 1993","La Ley 1438 de 2011","La Ley 1753 de 2015 (PND)","El Decreto 780 de 2016"],2,"El art. 66 de la Ley 1753 de 2015 la creó; entró en operación el 1 de agosto de 2017 y reemplazó al FOSYGA, que era una cuenta sin personería jurídica."],
+["¿Qué instancia eliminó el MIPRES?",["Las juntas de calificación de invalidez","Los Comités Técnico-Científicos (CTC)","La CRES","Las auditorías de cuentas médicas"],1,"MIPRES permite que el profesional prescriba directamente lo no financiado con UPC bajo su autonomía, sin pasar por un comité ni autorización administrativa previa."],
+["El PIC (Plan de Intervenciones Colectivas) lo ejecuta y financia…",["La EPS con cargo a la UPC","La ADRES con cargo a presupuestos máximos","La entidad territorial","La ARL"],2,"El PIC es responsabilidad de departamentos, distritos y municipios; cubre intervenciones poblacionales, no individuales, y no se financia con UPC."],
+["La función jurisdiccional de la Supersalud fue introducida por…",["La Ley 100 de 1993","La Ley 1122 de 2007","La Ley 1751 de 2015","El Decreto 858 de 2025"],1,"El art. 41 de la Ley 1122 de 2007 se la otorgó, y la Ley 1949 de 2019 la fortaleció. Permite resolver conflictos de cobertura con fuerza de sentencia, gratis y sin abogado."],
+["La UPC subsidiada subió mucho más que la contributiva en 2026 porque…",["Hay más afiliados en el subsidiado","La Corte ordenó llevar su prima pura al 95% de la contributiva","El SGP creció más que las cotizaciones","La reforma lo estableció"],1,"Responde a las órdenes de la T-760 de 2008 y a los Autos 411 de 2016 y 007 y 2049 de 2025. De ahí el +16,49% frente al +9,03% del contributivo."],
+["En capitación, ¿quién asume el riesgo del mayor uso de servicios?",["La EPS","La IPS","La ADRES","El usuario"],1,"En capitación se paga un valor fijo por persona/mes independientemente del uso, así que el exceso de utilización lo absorbe la IPS. En pago por evento, el riesgo es de la EPS."],
+["¿Cuál de estos NO es un régimen exceptuado?",["Fuerzas Militares y Policía","Magisterio (FOMAG)","Ecopetrol","Cajas de compensación familiar"],3,"Las cajas de compensación pueden actuar como EOC <b>dentro</b> del SGSSS. Los exceptuados están fuera del sistema y no reciben UPC."],
+["El Decreto 858 de 2025 adoptó…",["La reforma a la salud aprobada por el Congreso","El Modelo de Salud Preventivo, Predictivo y Resolutivo con CAPS y EBS","El nuevo Sistema Único de Habilitación","La eliminación de las EPS"],1,"Es una transformación del modelo de atención hecha por vía reglamentaria, sin reforma legal. Sus piezas son los CAPS con adscripción territorial y los Equipos Básicos de Salud."],
+["¿Cuál es el estado de la reforma a la salud a julio de 2026?",["Aprobada y en implementación","Archivada en Comisión Séptima en dic. 2025; nuevo proyecto radicado en jul. 2026","En sanción presidencial","Declarada inexequible"],1,"La Comisión Séptima del Senado archivó el proyecto anterior por 8 votos contra 5. En julio de 2026 se radicó un texto nuevo de 90 artículos. <b>La Ley 100 sigue vigente.</b>"],
+["El límite legal a la integración vertical en el régimen subsidiado es…",["10%","30%","50%","No hay límite"],1,"La Ley 1122 de 2007 limitó a un 30% el gasto en salud del régimen subsidiado que una EPS puede contratar con su propia red."],
+["La habilitación de servicios de salud es…",["Un permiso previo otorgado tras visita de verificación","Declarativa: se autoevalúa, se inscribe en el REPS y se verifica después","Voluntaria para prestadores privados","Otorgada por el INVIMA"],1,"Es declarativa y gratuita. El prestador queda habilitado desde la inscripción; la verificación de la autoridad territorial es posterior."],
+["Los elementos esenciales del derecho a la salud (Ley 1751, art. 6) son…",["Eficiencia, universalidad, solidaridad e integralidad","Disponibilidad, aceptabilidad, accesibilidad y calidad","Oportunidad, seguridad, pertinencia y continuidad","Equidad, calidad, participación y progresividad"],1,"D-A-A-C, tomados de la Observación General 14 del Comité DESC. Los del primer distractor son principios del art. 2 de la Ley 100; los del tercero, características de la calidad del SOGCS."],
+["En el SGRL, la incapacidad temporal por accidente de trabajo se paga…",["66,67% del IBC desde el día 3","100% del IBC desde el día siguiente al accidente","50% del IBC","No genera pago"],1,"Es una de las diferencias prácticas más importantes frente a la incapacidad por enfermedad general (66,67% desde el día 3, con los dos primeros a cargo del empleador)."],
+["¿Qué entidad opera el SIVIGILA?",["El INVIMA","El Instituto Nacional de Salud (INS)","La ADRES","El IETS"],1,"El INS opera la vigilancia en salud pública, es el laboratorio nacional de referencia y coordina la red de bancos de sangre. El INVIMA vigila productos, no eventos epidemiológicos."],
+["Un afiliado del grupo A del régimen subsidiado…",["Paga copagos reducidos","Está exento de copagos y cuotas moderadoras","Paga cuota moderadora pero no copago","Paga ambos"],1,"El grupo A (pobreza extrema del SISBÉN IV) está exento. En el subsidiado solo el grupo B paga copagos, y nunca cuotas moderadoras."],
+["La novedad de la Resolución 0107427 de 2026 de la ADRES es…",["Fijar la UPC del año","Reglamentar el giro directo de los presupuestos máximos","Crear los CAPS","Actualizar el listado de exclusiones"],1,"Permite girar los presupuestos máximos directamente a IPS y proveedores nominados por la EPS, con base en lo reportado en MIPRES. Cambia el flujo de caja del alto costo."],
+["El Decreto 1011 de 2006 hoy debe citarse como…",["Vigente y autónomo","Compilado en el Decreto 780 de 2016","Derogado sin sustituto","Reemplazado por la Resolución 3100 de 2019"],1,"El Decreto 780 de 2016 es el Decreto Único Reglamentario del Sector Salud y compiló la reglamentación dispersa, incluido el régimen del SOGCS."]
+];
+let qi=0,qs=0,answered=false;
+const qbody=document.getElementById("qbody"),qexp=document.getElementById("qexp"),
+  qexptx=document.getElementById("qexptx"),qnext=document.getElementById("qnext");
+function drawQ(){
+  answered=false;qexp.style.display="none";qnext.style.display="none";
+  document.getElementById("qpos").textContent=`Pregunta ${qi+1} de ${Q.length}`;
+  document.getElementById("qscore").textContent=`Aciertos: ${qs}`;
+  document.getElementById("qbar").style.width=(qi/Q.length*100)+"%";
+  if(qi>=Q.length){
+    qbody.innerHTML=`<h3 style="margin-top:0">Resultado: ${qs} de ${Q.length}</h3>
+      <p style="color:var(--ink2)">${qs>=22?"Dominio sólido. Puedes usar el manual solo como consulta puntual.":
+        qs>=16?"Buena base. Repasa los módulos de financiación y calidad, que es donde se concentran los errores.":
+        "Vale la pena una lectura completa de los módulos 05, 06 y 10 antes de repetir."}</p>`;
+    document.getElementById("qbar").style.width="100%";return;
+  }
+  const [t,o,c]=Q[qi];
+  qbody.innerHTML=`<h3 style="margin-top:0">${t}</h3>`+
+    o.map((x,i)=>`<button class="qopt" data-i="${i}">${x}</button>`).join("");
+  qbody.querySelectorAll(".qopt").forEach(b=>b.onclick=()=>{
+    if(answered)return;answered=true;
+    const i=+b.dataset.i;
+    qbody.querySelectorAll(".qopt").forEach((x,k)=>{
+      x.disabled=true;
+      if(k===c)x.classList.add("ok");
+      if(k===i&&i!==c)x.classList.add("no");
+    });
+    if(i===c)qs++;
+    document.getElementById("qscore").textContent=`Aciertos: ${qs}`;
+    qexptx.innerHTML=Q[qi][3];qexp.style.display="block";qnext.style.display="inline-block";
+  });
+}
+qnext.onclick=()=>{qi++;drawQ();};
+document.getElementById("qreset").onclick=()=>{qi=0;qs=0;drawQ();
+  document.getElementById("quiz").scrollIntoView({block:"start"});};
+drawQ();
+</script>
+</body>
+</html>

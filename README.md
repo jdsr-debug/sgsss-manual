@@ -4,6 +4,8 @@ Herramienta de estudio y consulta rápida sobre el **Sistema General de Segurida
 
 **→ [Abrir el manual](https://jdsr-debug.github.io/sgsss-manual/)**
 
+**→ [Abrir la calculadora de Tasa de Filtración Glomerular (TFG)](https://jdsr-debug.github.io/sgsss-manual/tfg.html)**
+
 ![Vista previa](preview.png)
 
 ---
@@ -46,6 +48,7 @@ Un solo archivo HTML sin dependencias: sin frameworks, sin CDN, sin analítica, 
 
 ```
 index.html      # el manual completo (~125 KB)
+tfg.html        # calculadora de Tasa de Filtración Glomerular (TFG)
 preview.png     # imagen para vista previa al compartir el enlace
 ```
 
